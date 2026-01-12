@@ -152,8 +152,8 @@ const response = await fetch('/api/send-email', {
 4. Use that password in the code above
 
 **Supabase Connection:**
-- URL: https://uyfpbbeoiplfwojqxxml.supabase.co
-- Anon Key: (already in .env.local)
+- URL: (see your Supabase dashboard)
+- Anon Key: (see your Supabase dashboard)
 
 ---
 

@@ -65,7 +65,7 @@ display: block
 - ✅ Email backup still works
 
 **To Complete Setup:**
-1. Go to: https://supabase.com/dashboard/project/uyfpbbeoiplfwojqxxml
+1. Go to: https://supabase.com/dashboard/project/YOUR_PROJECT_ID
 2. SQL Editor → Run `supabase-table-setup.sql`
 3. Done! Forms will save to database
 

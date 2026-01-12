@@ -24,14 +24,14 @@ touch .env.local
 Add these contents to `.env.local`:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://uyfpbbeoiplfwojqxxml.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5ZnBiYmVvaXBsZndvanF4eG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNDM5NTEsImV4cCI6MjA4MzcxOTk1MX0.S0oG-7axKgoSAG2San5JGo31qGNCT2JEXz9-xS5MhyM
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
 ### Step 2: Create Database Table
 
 Go to your Supabase project dashboard:
-https://supabase.com/dashboard/project/uyfpbbeoiplfwojqxxml
+https://supabase.com/dashboard/project/YOUR_PROJECT_ID
 
 Navigate to: **SQL Editor** → **New Query**
 
@@ -134,8 +134,8 @@ Run this to create `.env.local`:
 
 ```bash
 cat > /Users/hamzashahid/structurewebsite/.env.local << 'EOF'
-NEXT_PUBLIC_SUPABASE_URL=https://uyfpbbeoiplfwojqxxml.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5ZnBiYmVvaXBsZndvanF4eG1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNDM5NTEsImV4cCI6MjA4MzcxOTk1MX0.S0oG-7axKgoSAG2San5JGo31qGNCT2JEXz9-xS5MhyM
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 EOF
 ```
 
