@@ -22,6 +22,12 @@ export const ImageUploader = ({ onImageUploaded, currentImage }: ImageUploaderPr
       return;
     }
 
+    const client = supabase;
+    if (!client) {
+      alert('Image uploads are not configured (missing Supabase environment variables).');
+      return;
+    }
+
     setUploading(true);
 
     try {
@@ -29,13 +35,13 @@ export const ImageUploader = ({ onImageUploaded, currentImage }: ImageUploaderPr
       const fileName = `${Math.random().toString(36).substring(2)}_${Date.now()}.${fileExt}`;
       const filePath = `images/${fileName}`;
 
-      const { error: uploadError } = await supabase.storage
+      const { error: uploadError } = await client.storage
         .from('blog-content')
         .upload(filePath, file);
 
       if (uploadError) throw uploadError;
 
-      const { data: { publicUrl } } = supabase.storage
+      const { data: { publicUrl } } = client.storage
         .from('blog-content')
         .getPublicUrl(filePath);
 
