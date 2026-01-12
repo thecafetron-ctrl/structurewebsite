@@ -121,6 +121,11 @@ I'll publish immediately - no questions asked.`,
   };
 
   const fetchSchedules = async () => {
+    if (!supabase) {
+      setLoadingSchedules(false);
+      return;
+    }
+    
     setLoadingSchedules(true);
     try {
       const { data, error } = await supabase
@@ -180,6 +185,11 @@ I'll publish immediately - no questions asked.`,
   };
 
   const triggerManualPosts = async () => {
+    if (!supabase) {
+      alert('Database connection not available');
+      return;
+    }
+    
     setManualPosting(true);
     setProgressLog([]);
     
@@ -342,6 +352,11 @@ Make sure the local server is running: \`cd server && npm start\``,
       return;
     }
 
+    if (!supabase) {
+      alert('Database connection not available');
+      return;
+    }
+
     try {
       const { error } = await supabase
         .from('ai_article_schedules')
@@ -364,6 +379,11 @@ Make sure the local server is running: \`cd server && npm start\``,
 
   const deleteSchedule = async (id: string) => {
     if (!confirm('Delete this schedule?')) return;
+    
+    if (!supabase) {
+      alert('Database connection not available');
+      return;
+    }
     
     try {
       const { error } = await supabase

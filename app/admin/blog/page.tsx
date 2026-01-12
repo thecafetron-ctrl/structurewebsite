@@ -29,6 +29,11 @@ function AdminBlogContent() {
   }, []);
 
   const fetchPosts = async () => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
+    
     try {
       const { data, error } = await supabase
         .from('posts')
@@ -51,6 +56,11 @@ function AdminBlogContent() {
 
   const handleDelete = async (id: string, title: string) => {
     if (!confirm(`Are you sure you want to delete "${title}"? This action cannot be undone.`)) {
+      return;
+    }
+
+    if (!supabase) {
+      alert('Database connection not available');
       return;
     }
 

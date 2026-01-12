@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { getContactEmail, getContactPhone } from '@/lib/seo/contact'
 
 type HeadingLevel = 'h1' | 'h2'
 
@@ -25,6 +26,8 @@ export default function ContactForm({
   headingAs?: HeadingLevel
   title?: string
 }) {
+  const contactEmail = getContactEmail()
+  const contactPhone = getContactPhone()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -202,12 +205,12 @@ export default function ContactForm({
 
           <p className="text-center text-sm text-gray-500">
             Or contact us directly at{' '}
-            <a href="mailto:sales@structurelogistics.com" className="text-white hover:underline">
-              sales@structurelogistics.com
+            <a href={`mailto:${contactEmail}`} className="text-white hover:underline">
+              {contactEmail}
             </a>
             {' '}or{' '}
-            <a href="tel:+971553871664" className="text-white hover:underline">
-              +971 55 387 1664
+            <a href={`tel:${contactPhone.replace(/\s+/g, '')}`} className="text-white hover:underline">
+              {contactPhone}
             </a>
           </p>
         </motion.form>

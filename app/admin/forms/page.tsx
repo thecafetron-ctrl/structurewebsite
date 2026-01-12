@@ -32,6 +32,11 @@ function AdminFormsContent() {
   }, []);
 
   const fetchLeads = async () => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
+    
     try {
       const { data, error } = await supabase
         .from('lead_forms')

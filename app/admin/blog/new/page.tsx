@@ -46,6 +46,12 @@ function AdminBlogEditorContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!supabase) {
+      alert('Database connection not available');
+      return;
+    }
+    
     setLoading(true);
 
     try {

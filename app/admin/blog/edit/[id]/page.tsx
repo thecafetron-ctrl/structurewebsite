@@ -32,6 +32,11 @@ function AdminBlogEditorContent() {
   }, [id]);
 
   const fetchPost = async () => {
+    if (!supabase) {
+      setFetching(false);
+      return;
+    }
+    
     try {
       const { data, error } = await supabase
         .from('posts')
@@ -80,6 +85,12 @@ function AdminBlogEditorContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!supabase) {
+      alert('Database connection not available');
+      return;
+    }
+    
     setLoading(true);
 
     try {

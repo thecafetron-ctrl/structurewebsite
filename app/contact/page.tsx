@@ -5,7 +5,7 @@ import { pageMetadata } from '@/lib/seo/metadata'
 import ContactPageClient from './ContactPageClient'
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Request a Quote',
+  title: 'Contact Sales',
   titleTemplate: 'keyword',
   description:
     'Request a quote from STRUCTURE. Tell us about your lanes, volumes, and workflows to evaluate AI dispatch, invoicing, and customs automation for your team.',
@@ -19,7 +19,7 @@ export default function ContactPage() {
       <JsonLd
         data={breadcrumbListSchema([
           { name: 'Home', path: '/' },
-          { name: 'Request a Quote', path: '/contact' },
+          { name: 'Contact', path: '/contact' },
         ])}
       />
       <JsonLd

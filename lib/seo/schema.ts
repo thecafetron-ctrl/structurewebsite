@@ -1,3 +1,4 @@
+import { getContactEmail, getContactPhone } from './contact'
 import { absoluteUrl, BRAND_NAME, getSiteUrl } from './site'
 
 export function organizationSchema(args?: {
@@ -20,8 +21,8 @@ export function organizationSchema(args?: {
       {
         '@type': 'ContactPoint',
         contactType: 'sales',
-        email: args?.contactEmail || 'sales@structurelogistics.com',
-        telephone: args?.contactTelephone || '+971 55 387 1664',
+        email: args?.contactEmail || getContactEmail(),
+        telephone: args?.contactTelephone || getContactPhone(),
         url: absoluteUrl('/contact'),
       },
     ],
