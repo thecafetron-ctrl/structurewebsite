@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
@@ -33,6 +35,11 @@ function AdminDashboardContent() {
   }, [user]);
 
   const fetchStats = async () => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
+    
     try {
       const [postsRes, leadsRes, schedulesRes] = await Promise.all([
         supabase.from('posts').select('id', { count: 'exact', head: true }),
