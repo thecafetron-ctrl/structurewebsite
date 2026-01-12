@@ -71,13 +71,22 @@ export default function NewGlobeCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [hasAnimatedIn, setHasAnimatedIn] = useState(false)
   const [direction, setDirection] = useState(1) // 1 = forward, -1 = backward
 
   // Simple visibility detection
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting)
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          // Trigger entrance animation
+          if (!hasAnimatedIn) {
+            setHasAnimatedIn(true)
+          }
+        } else {
+          setIsVisible(false)
+        }
       },
       { threshold: 0.2 }
     )
@@ -85,7 +94,7 @@ export default function NewGlobeCarousel() {
       observer.observe(containerRef.current)
     }
     return () => observer.disconnect()
-  }, [])
+  }, [hasAnimatedIn])
 
   // Get indices for visible items
   const getVisibleIndices = useCallback(() => {
@@ -123,112 +132,135 @@ export default function NewGlobeCarousel() {
     setTimeout(() => setIsPaused(false), 3000)
   }
 
-  // Animation variants for the sliding carousel effect
-  const slideVariants = {
-    enterFromRight: {
-      x: 100,
-      opacity: 0,
-      scale: 0.7,
+  // Entrance animation for the whole section
+  const entranceVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.8,
+      y: 50 
     },
-    enterFromLeft: {
-      x: -100,
-      opacity: 0,
-      scale: 0.7,
-    },
-    center: {
-      x: 0,
-      opacity: 1,
+    visible: { 
+      opacity: 1, 
       scale: 1,
-    },
-    exitToLeft: {
-      x: -100,
-      opacity: 0,
-      scale: 0.7,
-    },
-    exitToRight: {
-      x: 100,
-      opacity: 0,
-      scale: 0.7,
-    },
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    }
   }
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[80vh] flex items-center py-8 overflow-hidden"
+      className="relative min-h-[80vh] flex items-center py-8"
       style={{ position: 'relative' }}
     >
       {/* Fully transparent - no background */}
       
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4">
         
-        {/* Globe Container with Text INSIDE */}
-        <div className="relative h-[450px] sm:h-[550px] md:h-[650px] w-full">
-          {/* Globe Canvas - No animation delay, loads instantly */}
+        {/* Globe Container with Text INSIDE - Animated entrance together */}
+        <motion.div 
+          className="relative h-[450px] sm:h-[550px] md:h-[650px] w-full"
+          variants={entranceVariants}
+          initial="hidden"
+          animate={hasAnimatedIn ? "visible" : "hidden"}
+        >
+          {/* Globe Canvas */}
           <div className="absolute inset-0">
             <GlobeCanvas isVisible={isVisible} activeIndex={activeIndex} />
           </div>
           
-          {/* Text Carousel - Positioned in CENTER of globe */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="flex items-center justify-between w-full max-w-5xl px-4">
+          {/* Text Carousel - Positioned in CENTER of globe - NO overflow hidden */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+            <div className="flex items-center justify-center gap-4 sm:gap-8 md:gap-12 w-full max-w-6xl px-4">
               
               {/* Left Item (Previous) */}
               <motion.div 
-                className="flex-shrink-0 w-[100px] sm:w-[140px] md:w-[160px] cursor-pointer pointer-events-auto"
+                className="flex-shrink-0 w-[100px] sm:w-[150px] md:w-[200px] cursor-pointer pointer-events-auto text-right"
                 onClick={goToPrev}
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
-                whileHover={{ scale: 1.05, opacity: 0.8 }}
+                whileHover={{ scale: 1.05, opacity: 1 }}
               >
-                <AnimatePresence mode="popLayout">
+                <AnimatePresence mode="wait">
                   <motion.h3
                     key={`left-${prev}`}
-                    initial={{ x: direction > 0 ? 0 : -50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 0.5 }}
-                    exit={{ x: direction > 0 ? -50 : 0, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                    className="text-xs sm:text-sm md:text-base font-semibold text-white/50 hover:text-white/80 transition-colors text-left leading-tight"
+                    initial={{ 
+                      x: direction > 0 ? 100 : -50, 
+                      opacity: 0,
+                      scale: direction > 0 ? 1.3 : 0.8,
+                    }}
+                    animate={{ 
+                      x: 0, 
+                      opacity: 0.6,
+                      scale: 1,
+                    }}
+                    exit={{ 
+                      x: -50, 
+                      opacity: 0,
+                      scale: 0.8,
+                    }}
+                    transition={{ 
+                      duration: 0.5, 
+                      ease: [0.4, 0, 0.2, 1]
+                    }}
+                    className="text-sm sm:text-base md:text-lg font-semibold text-white/60 hover:text-white transition-colors text-right leading-tight"
                   >
                     {AI_SYSTEMS[prev].name}
                   </motion.h3>
                 </AnimatePresence>
               </motion.div>
 
-              {/* Center Item (Current) - Dynamic sliding animation */}
-              <div className="flex-1 max-w-md mx-4 sm:mx-8 text-center overflow-hidden">
-                <AnimatePresence mode="popLayout" initial={false}>
+              {/* Center Item (Current) - Clean slide animation with glow transition */}
+              <div className="flex-1 max-w-md text-center">
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={`center-${current}`}
-                    initial={direction > 0 ? "enterFromRight" : "enterFromLeft"}
-                    animate="center"
-                    exit={direction > 0 ? "exitToLeft" : "exitToRight"}
-                    variants={slideVariants}
+                    initial={{ 
+                      x: direction > 0 ? 150 : -150, 
+                      opacity: 0,
+                      scale: 0.7,
+                    }}
+                    animate={{ 
+                      x: 0, 
+                      opacity: 1,
+                      scale: 1,
+                    }}
+                    exit={{ 
+                      x: direction > 0 ? -150 : 150, 
+                      opacity: 0,
+                      scale: 0.7,
+                    }}
                     transition={{ 
-                      duration: 0.6, 
+                      duration: 0.5, 
                       ease: [0.4, 0, 0.2, 1],
                     }}
+                    className="px-4"
                   >
-                    <motion.h3 
-                      className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3"
+                    <h3 
+                      className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4"
                       style={{
                         textShadow: `
                           0 0 20px rgba(100, 200, 255, 0.9),
                           0 0 40px rgba(100, 200, 255, 0.6),
-                          0 0 60px rgba(100, 200, 255, 0.4)
+                          0 0 60px rgba(100, 200, 255, 0.4),
+                          0 0 80px rgba(100, 200, 255, 0.2)
                         `,
                       }}
                     >
                       {AI_SYSTEMS[current].name}
-                    </motion.h3>
+                    </h3>
                     
                     <motion.p 
-                      className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed"
-                      initial={{ opacity: 0, y: 10 }}
+                      className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed max-w-sm mx-auto"
+                      initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2, duration: 0.4 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ delay: 0.1, duration: 0.4 }}
                       style={{
-                        textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)',
+                        textShadow: '0 2px 15px rgba(0, 0, 0, 0.9)',
                       }}
                     >
                       {AI_SYSTEMS[current].desc}
@@ -239,20 +271,35 @@ export default function NewGlobeCarousel() {
 
               {/* Right Item (Next) */}
               <motion.div 
-                className="flex-shrink-0 w-[100px] sm:w-[140px] md:w-[160px] cursor-pointer pointer-events-auto"
+                className="flex-shrink-0 w-[100px] sm:w-[150px] md:w-[200px] cursor-pointer pointer-events-auto text-left"
                 onClick={goToNext}
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
-                whileHover={{ scale: 1.05, opacity: 0.8 }}
+                whileHover={{ scale: 1.05, opacity: 1 }}
               >
-                <AnimatePresence mode="popLayout">
+                <AnimatePresence mode="wait">
                   <motion.h3
                     key={`right-${next}`}
-                    initial={{ x: direction > 0 ? 50 : 0, opacity: 0 }}
-                    animate={{ x: 0, opacity: 0.5 }}
-                    exit={{ x: direction > 0 ? 0 : 50, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                    className="text-xs sm:text-sm md:text-base font-semibold text-white/50 hover:text-white/80 transition-colors text-right leading-tight"
+                    initial={{ 
+                      x: direction > 0 ? 50 : -100, 
+                      opacity: 0,
+                      scale: direction > 0 ? 0.8 : 1.3,
+                    }}
+                    animate={{ 
+                      x: 0, 
+                      opacity: 0.6,
+                      scale: 1,
+                    }}
+                    exit={{ 
+                      x: 50, 
+                      opacity: 0,
+                      scale: 0.8,
+                    }}
+                    transition={{ 
+                      duration: 0.5, 
+                      ease: [0.4, 0, 0.2, 1]
+                    }}
+                    className="text-sm sm:text-base md:text-lg font-semibold text-white/60 hover:text-white transition-colors text-left leading-tight"
                   >
                     {AI_SYSTEMS[next].name}
                   </motion.h3>
@@ -260,10 +307,15 @@ export default function NewGlobeCarousel() {
               </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Progress indicators */}
-        <div className="flex justify-center gap-1.5 sm:gap-2 mt-4 flex-wrap">
+        {/* Progress indicators - also animated in */}
+        <motion.div 
+          className="flex justify-center gap-1.5 sm:gap-2 mt-4 flex-wrap"
+          initial={{ opacity: 0, y: 20 }}
+          animate={hasAnimatedIn ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           {AI_SYSTEMS.map((_, index) => (
             <button
               key={index}
@@ -283,7 +335,7 @@ export default function NewGlobeCarousel() {
               }`} />
             </button>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
