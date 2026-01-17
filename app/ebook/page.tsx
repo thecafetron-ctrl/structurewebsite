@@ -657,8 +657,8 @@ export default function EbookPage() {
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-4 sm:pt-32 sm:pb-16 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          {/* Text Content - Always above on mobile */}
-          <div className={`text-center mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* 1. Header/Title - Always at top */}
+          <div className={`text-center mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 text-cyan-400 text-xs sm:text-sm font-medium mb-6">
                 <BookOpen className="w-4 h-4" />
               Free Playbook for Freight Operators
@@ -672,35 +672,14 @@ export default function EbookPage() {
               <span className="text-white"> Scaling Playbook</span>
               </h1>
               
-            <p className="text-base sm:text-lg lg:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto">
                 {EBOOK_CONFIG.subtitle}
               </p>
-              
-            {/* Workflow Diagram */}
-            <div className="mb-8">
-              <WorkflowDiagram />
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <button
-                  onClick={() => setIsModalOpen(true)}
-                className="group px-8 py-4 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-bold rounded-xl transition-all text-lg flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105"
-                >
-                  <Download className="w-5 h-5" />
-                  {EBOOK_CONFIG.ctaText}
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
-            </div>
-            
-            <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
-              <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span>Instant PDF delivery to your inbox</span>
-            </div>
           </div>
           
-          {/* Book Cover */}
-          <div className={`flex justify-center transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px]">
+          {/* 2. Book Cover - Below header */}
+          <div className={`flex justify-center mb-8 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[340px]">
               <div className="relative group">
                 {/* Glow effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -720,11 +699,33 @@ export default function EbookPage() {
                   />
                 </div>
               </div>
+            </div>
+          </div>
+          
+          {/* 3. CTA Button - Below image */}
+          <div className={`text-center mb-8 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <button
+                  onClick={() => setIsModalOpen(true)}
+              className="group px-8 py-4 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-bold rounded-xl transition-all text-lg flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 mx-auto"
+                >
+                  <Download className="w-5 h-5" />
+                  {EBOOK_CONFIG.ctaText}
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+            
+            <div className="flex items-center justify-center gap-2 text-gray-400 text-sm mt-4">
+              <CheckCircle2 className="w-4 h-4 text-green-400" />
+              <span>Instant PDF delivery to your inbox</span>
                 </div>
               </div>
               
-              {/* Trust indicators */}
-          <div className={`mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          {/* 4. Workflow Diagram - Below button */}
+          <div className={`mb-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <WorkflowDiagram />
+          </div>
+          
+          {/* 5. Trust indicators - At bottom */}
+          <div className={`flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-cyan-400/50" />
                   <span>Instant delivery</span>
