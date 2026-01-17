@@ -276,6 +276,7 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
     if (!formData.company.trim()) newErrors.company = 'Company is required'
     if (!formData.role) newErrors.role = 'Please select your role'
     if (!formData.companySize) newErrors.companySize = 'Please select company size'
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required'
     if (!formData.consent) newErrors.consent = 'You must agree to receive the playbook'
     
     setErrors(newErrors)
@@ -324,8 +325,8 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
       }
     } catch (err) {
       console.error('Ebook form submission error:', err)
-      setIsSubmitting(false)
-      setIsSuccess(true)
+    setIsSubmitting(false)
+    setIsSuccess(true)
       
       // Fire Meta Pixel Lead event even on error
       if (typeof window !== 'undefined' && (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq) {
@@ -364,7 +365,7 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
             </button>
             
         <div className="p-6">
-          {isSuccess ? (
+              {isSuccess ? (
             <div className="text-center py-8 animate-fadeIn">
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center animate-bounce-slow">
                 <Mail className="w-10 h-10 text-green-400" />
@@ -379,13 +380,13 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                   📧 The PDF should arrive within a few minutes.<br/>
                   Don&apos;t forget to check your <span className="text-white">spam/promotions</span> folder!
                 </p>
-              </div>
-              <button
-                onClick={onClose}
+                  </div>
+                  <button
+                    onClick={onClose}
                 className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-semibold rounded-xl hover:from-cyan-500 hover:to-cyan-400 transition-all"
-              >
+                  >
                 Got It!
-              </button>
+                  </button>
             </div>
           ) : (
             <>
@@ -493,16 +494,17 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                     
                 <div className="animate-slideIn" style={{ animationDelay: '200ms' }}>
                   <label className="block text-sm font-medium text-gray-300 mb-1">
-                        Phone <span className="text-gray-500">(optional)</span>
-                      </label>
-                      <input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-all"
-                        placeholder="+1 (555) 000-0000"
-                      />
-                    </div>
+                    Phone *
+                  </label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    className={`w-full px-4 py-3 bg-white/5 border ${errors.phone ? 'border-red-500' : 'border-white/10'} rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-all`}
+                    placeholder="+1 (555) 000-0000"
+                  />
+                  {errors.phone && <p className="mt-1 text-sm text-red-400">{errors.phone}</p>}
+                </div>
                     
                 <div className="flex items-start gap-3 animate-slideIn" style={{ animationDelay: '250ms' }}>
                       <input
@@ -523,22 +525,22 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                   data-event="ebook_lead_submit"
                   data-action="submit"
                   data-category="ebook"
-                  type="submit"
-                  disabled={isSubmitting}
+                      type="submit"
+                      disabled={isSubmitting}
                   className="w-full py-4 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-bold rounded-xl transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 animate-slideIn"
                   style={{ animationDelay: '300ms' }}
-                >
-                  {isSubmitting ? (
-                    <>
+                    >
+                      {isSubmitting ? (
+                        <>
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Download className="w-5 h-5" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Download className="w-5 h-5" />
                       Send Me The Playbook
-                    </>
-                  )}
+                        </>
+                      )}
                 </button>
                   </form>
                 </>
