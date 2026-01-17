@@ -220,13 +220,6 @@ canvas {
     transform: none !important;
   }
   
-  /* Keep containers full width */
-  section > div,
-  .relative {
-    max-width: 100vw !important;
-    overflow: hidden !important;
-  }
-  
   /* Graphic containers - bigger on mobile */
   [class*="h-["] {
     max-width: 95vw !important;
