@@ -153,10 +153,11 @@ export default function NewGlobeCarousel() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[80vh] flex items-center py-8"
+      className="relative min-h-[80vh] flex items-center py-8 overflow-visible"
       style={{ position: 'relative' }}
     >
-      {/* Fully transparent - no background */}
+      {/* Background - full width */}
+      <div className="absolute inset-0 -left-[50vw] -right-[50vw] ml-[50%] mr-[50%] w-screen bg-charcoal-900" />
       
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4">
         

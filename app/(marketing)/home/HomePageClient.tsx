@@ -28,7 +28,7 @@ export default function HomePageClient() {
   return (
     <>
       <MovingStars />
-      <main className="relative overflow-x-hidden">
+      <main className="relative">
         <Header />
         <section id="section-0"><Hero /></section>
         <section id="section-1"><CostSection /></section>

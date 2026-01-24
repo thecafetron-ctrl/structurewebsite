@@ -11,10 +11,10 @@ export default function FinalCTA() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center py-32 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center py-32 overflow-visible"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-900 via-black to-charcoal-900" />
+      {/* Background - full width */}
+      <div className="absolute inset-0 -left-[50vw] -right-[50vw] ml-[50%] mr-[50%] w-screen bg-charcoal-900" />
 
       {/* Ambient Animation */}
       <div className="absolute inset-0">

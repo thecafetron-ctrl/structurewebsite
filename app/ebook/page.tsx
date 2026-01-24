@@ -311,7 +311,7 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
 
       setIsSubmitting(false)
       setIsSuccess(true)
-      
+    
       // Fire Meta Pixel Lead event on success
       if (typeof window !== 'undefined' && (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq) {
         (window as typeof window & { fbq: (...args: unknown[]) => void }).fbq('track', 'Lead', {
@@ -355,7 +355,7 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
       <div 
         className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-gradient-to-b from-gray-900 to-gray-950 rounded-2xl border border-white/10 shadow-2xl animate-slideUp"
         onClick={(e) => e.stopPropagation()}
-      >
+          >
             <button
               onClick={onClose}
               className="absolute top-4 right-4 p-2 rounded-lg hover:bg-white/10 transition-colors z-10"
@@ -388,8 +388,8 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                 Got It!
                   </button>
             </div>
-          ) : (
-            <>
+              ) : (
+                <>
               <div className="mb-6 text-center">
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-cyan-500/10 flex items-center justify-center">
                   <BookOpen className="w-6 h-6 text-cyan-400" />
@@ -411,8 +411,8 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                       tabIndex={-1}
                       autoComplete="off"
                       className="absolute opacity-0 pointer-events-none h-0 w-0"
-                />
-                
+                    />
+                    
                 <div className="animate-slideIn" style={{ animationDelay: '0ms' }}>
                   <label className="block text-sm font-medium text-gray-300 mb-1">
                     Full Name *
@@ -495,16 +495,16 @@ function FormModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
                 <div className="animate-slideIn" style={{ animationDelay: '200ms' }}>
                   <label className="block text-sm font-medium text-gray-300 mb-1">
                     Phone *
-                  </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
                     className={`w-full px-4 py-3 bg-white/5 border ${errors.phone ? 'border-red-500' : 'border-white/10'} rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-all`}
-                    placeholder="+1 (555) 000-0000"
-                  />
+                        placeholder="+1 (555) 000-0000"
+                      />
                   {errors.phone && <p className="mt-1 text-sm text-red-400">{errors.phone}</p>}
-                </div>
+                    </div>
                     
                 <div className="flex items-start gap-3 animate-slideIn" style={{ animationDelay: '250ms' }}>
                       <input
@@ -574,7 +574,7 @@ function FAQItem({ question, answer, isOpen, onClick }: {
       <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
         <p className="pb-4 text-gray-400 text-sm leading-relaxed">
           {answer}
-        </p>
+            </p>
       </div>
     </div>
   )
@@ -593,7 +593,7 @@ export default function EbookPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ overscrollBehavior: 'auto' }}>
       {/* Meta Pixel Code */}
       <Script id="meta-pixel" strategy="afterInteractive">
         {`
@@ -656,7 +656,7 @@ export default function EbookPage() {
       <AnimatedBackground />
       
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 py-3 px-4 sm:py-4 sm:px-6 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5">
+      <header className="fixed top-0 left-0 right-0 z-40 py-3 px-4 sm:py-4 sm:px-6 bg-[#0a0a0a]/90 backdrop-blur-md">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <Image 
@@ -679,7 +679,7 @@ export default function EbookPage() {
       </header>
       
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4 sm:pt-32 sm:pb-16 sm:px-6">
+      <section className="ebook-section pt-24 pb-12 px-4 sm:pt-32 sm:pb-16 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* 1. Header/Title - Always at top */}
           <div className={`text-center mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -687,7 +687,7 @@ export default function EbookPage() {
                 <BookOpen className="w-4 h-4" />
               Free Playbook for Freight Operators
             </div>
-            
+              
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6">
               <span className="text-white">The </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">90-Day</span>
@@ -736,7 +736,7 @@ export default function EbookPage() {
                   {EBOOK_CONFIG.ctaText}
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
-            
+                
             <div className="flex items-center justify-center gap-2 text-gray-400 text-sm mt-4">
               <CheckCircle2 className="w-4 h-4 text-green-400" />
               <span>Instant PDF delivery to your inbox</span>
@@ -765,9 +765,9 @@ export default function EbookPage() {
               </div>
         </div>
       </section>
-      
+            
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 border-y border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent">
+      <section className="ebook-section py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-white/[0.02] to-transparent">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-3 gap-4 sm:gap-8">
             {EBOOK_CONFIG.stats.map((stat, index) => (
@@ -787,7 +787,7 @@ export default function EbookPage() {
       </section>
       
       {/* Benefits Section */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6">
+      <section className="ebook-section py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
@@ -837,7 +837,7 @@ export default function EbookPage() {
                 <div
                 key={chapter.number}
                   className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all"
-                >
+              >
                   <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 flex items-center justify-center">
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" />
                 </div>
@@ -869,7 +869,7 @@ export default function EbookPage() {
                   </div>
                   <span className="text-sm group-hover:text-white transition-colors">{item}</span>
                 </div>
-              ))}
+            ))}
             </div>
           </div>
         </div>
@@ -921,7 +921,7 @@ export default function EbookPage() {
                     <div className="w-1.5 h-1.5 rounded-full bg-green-400 mt-1.5 flex-shrink-0" />
                     {item}
                   </li>
-                ))}
+            ))}
               </ul>
             </div>
           </div>
@@ -982,7 +982,7 @@ export default function EbookPage() {
       </section>
       
       {/* Footer */}
-      <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-white/5">
+      <footer className="py-6 sm:py-8 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors">
             <Image 

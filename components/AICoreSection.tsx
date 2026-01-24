@@ -24,10 +24,10 @@ export default function AICoreSection() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[85vh] flex items-center py-16 overflow-hidden"
+      className="relative min-h-[85vh] flex items-center py-16 overflow-visible"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-900 via-charcoal-800 to-charcoal-900" />
+      {/* Background - full width */}
+      <div className="absolute inset-0 -left-[50vw] -right-[50vw] ml-[50%] mr-[50%] w-screen bg-charcoal-900" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full">
         <div className="text-center mb-8 md:mb-16">

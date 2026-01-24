@@ -89,7 +89,6 @@ a,
 [role="button"] {
   min-width: 44px;
   min-height: 44px;
-  touch-action: manipulation;
 }
 
 /* INSTANT interactions - MAX 0.2s */
@@ -119,12 +118,9 @@ a:hover {
   animation: fastFadeIn 0.2s ease-out forwards;
 }
 
-/* All sections full height for clean scroll */
+/* Section styling - content-based height for proper scrolling */
 section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
 body {
@@ -132,20 +128,21 @@ body {
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Performance optimizations */
   -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Smooth momentum scrolling */
 html {
-  scroll-behavior: smooth; /* Native smooth scroll */
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
 }
 
 canvas {
@@ -155,11 +152,10 @@ canvas {
   -webkit-backface-visibility: hidden;
 }
 
-/* ABSOLUTE FIX - FORCE center everything */
+/* Section wrapper centering */
 .section-wrapper {
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;

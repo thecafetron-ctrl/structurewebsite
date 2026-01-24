@@ -1,5 +1,5 @@
 export function getContactEmail(): string {
-  return process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'structureailogistics@gmail.com'
+  return process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'sales@structurelogistics.com'
 }
 
 export function getContactPhone(): string {

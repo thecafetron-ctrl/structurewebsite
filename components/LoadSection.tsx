@@ -11,10 +11,10 @@ export default function LoadSection() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[85vh] flex items-center py-16 overflow-hidden"
+      className="relative min-h-[85vh] flex items-center py-16 overflow-visible"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-900 via-black to-charcoal-900" />
+      {/* Background - full width */}
+      <div className="absolute inset-0 -left-[50vw] -right-[50vw] ml-[50%] mr-[50%] w-screen bg-charcoal-900" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full">
         <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:gap-16 items-center">

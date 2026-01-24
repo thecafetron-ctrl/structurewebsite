@@ -16,11 +16,11 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 sm:py-0"
+      className="relative min-h-screen flex items-center justify-center overflow-visible py-20 sm:py-0"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal-900 via-charcoal-800 to-charcoal-900" />
+      {/* Animated Background - full width */}
+      <div className="absolute inset-0 overflow-visible">
+        <div className="absolute inset-0 -left-[50vw] -right-[50vw] ml-[50%] mr-[50%] w-screen bg-charcoal-900" />
         <motion.div
           style={{ opacity }}
           className="absolute inset-0 flex items-center justify-center"
