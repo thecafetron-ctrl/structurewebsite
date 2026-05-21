@@ -141,7 +141,7 @@ export default function ContactForm({
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-white/30 transition-colors"
-                placeholder="+971 XX XXX XXXX"
+                placeholder="+1 XXX XXX XXXX"
               />
             </div>
 

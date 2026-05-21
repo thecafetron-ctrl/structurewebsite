@@ -3,7 +3,7 @@ export function getContactEmail(): string {
 }
 
 export function getContactPhone(): string {
-  return process.env.NEXT_PUBLIC_CONTACT_PHONE || '+971 55 387 1664'
+  return process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1 442 237 8419'
 }
 
 

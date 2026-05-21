@@ -1,8 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { getContactPhone } from '@/lib/seo/contact'
 
 export default function Footer() {
+  const contactPhone = getContactPhone()
+  const contactPhoneTel = contactPhone.replace(/\s+/g, '')
+
   return (
     <footer className="relative bg-black py-16 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 to-black" />
@@ -33,8 +37,8 @@ export default function Footer() {
                 support@structurelogistics.com
               </a>
               <br />
-              Phone: <a href="tel:+971553871664" className="hover:text-white transition-colors">
-                +971 55 387 1664
+              Phone: <a href={`tel:${contactPhoneTel}`} className="hover:text-white transition-colors">
+                {contactPhone}
               </a>
             </p>
           </div>
