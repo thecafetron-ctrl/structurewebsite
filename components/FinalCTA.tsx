@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import { useInView } from 'framer-motion'
+import Aurora from '@/components/fx/Aurora'
+import MagneticButton from '@/components/fx/MagneticButton'
 
 export default function FinalCTA() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -18,6 +20,7 @@ export default function FinalCTA() {
 
       {/* Ambient Animation */}
       <div className="absolute inset-0">
+        <Aurora intensity={1.4} />
         <AmbientAnimation isInView={isInView} />
       </div>
 
@@ -50,55 +53,57 @@ export default function FinalCTA() {
           transition={{ duration: 1, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            type="button"
-            aria-label="Request a demo"
-            onClick={() => {
-              window.location.href = '/contact'
-            }}
-            className="relative px-12 py-5 rounded-2xl overflow-hidden group"
-          >
-            {/* Background layers */}
-            <div className="absolute inset-0 bg-white" />
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            
-            {/* Animated glow */}
-            <motion.div
-              className="absolute -inset-2 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-              animate={{
-                background: [
-                  'radial-gradient(circle at 0% 50%, rgba(255, 255, 255, 0.3), transparent)',
-                  'radial-gradient(circle at 100% 50%, rgba(255, 255, 255, 0.3), transparent)',
-                  'radial-gradient(circle at 0% 50%, rgba(255, 255, 255, 0.3), transparent)',
-                ],
+          <MagneticButton>
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              type="button"
+              aria-label="Request a demo"
+              onClick={() => {
+                window.location.href = '/contact'
               }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-            />
+              className="relative px-12 py-5 rounded-2xl overflow-hidden group"
+            >
+              {/* Background layers */}
+              <div className="absolute inset-0 bg-white" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-            {/* Text */}
-            <span className="relative text-black font-bold text-xl sm:text-2xl tracking-wide">
-              Schedule Demo
-            </span>
-          </motion.button>
+              {/* Animated glow */}
+              <motion.div
+                className="absolute -inset-2 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                animate={{
+                  background: [
+                    'radial-gradient(circle at 0% 50%, rgba(255, 255, 255, 0.3), transparent)',
+                    'radial-gradient(circle at 100% 50%, rgba(255, 255, 255, 0.3), transparent)',
+                    'radial-gradient(circle at 0% 50%, rgba(255, 255, 255, 0.3), transparent)',
+                  ],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+              />
+              <span className="shine-bar" />
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            type="button"
-            aria-label="Contact sales"
-            onClick={() => {
-              window.location.href = 'mailto:sales@structurelogistics.com?subject=STRUCTURE%20Sales%20Inquiry'
-            }}
-            className="relative px-12 py-5 rounded-2xl overflow-hidden group"
-          >
-            <div className="absolute inset-0 glass" />
-            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <span className="relative text-white font-semibold text-xl sm:text-2xl tracking-wide">
-              Contact Sales
-            </span>
-          </motion.button>
+              {/* Text */}
+              <span className="relative text-black font-bold text-xl sm:text-2xl tracking-wide">
+                Schedule Demo
+              </span>
+            </motion.button>
+          </MagneticButton>
+
+          <MagneticButton>
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              type="button"
+              aria-label="Contact sales"
+              onClick={() => {
+                window.location.href = 'mailto:sales@structurelogistics.com?subject=STRUCTURE%20Sales%20Inquiry'
+              }}
+              className="relative px-12 py-5 rounded-2xl overflow-hidden group glow-border"
+            >
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative text-white font-semibold text-xl sm:text-2xl tracking-wide">
+                Contact Sales
+              </span>
+            </motion.button>
+          </MagneticButton>
         </motion.div>
       </div>
     </section>

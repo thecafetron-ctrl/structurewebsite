@@ -1,7 +1,11 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import { WordReveal } from '@/components/fx/Reveal'
+import MagneticButton from '@/components/fx/MagneticButton'
+import Aurora from '@/components/fx/Aurora'
+import { smoothScrollTo } from '@/components/fx/SmoothScroll'
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -10,121 +14,119 @@ export default function Hero() {
     offset: ['start start', 'end start'],
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '45%'])
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15])
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-visible py-20 sm:py-0"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 sm:py-0"
     >
-      {/* Animated Background - full width */}
-      <div className="absolute inset-0 overflow-visible">
-        <div className="absolute inset-0 -left-[50vw] -right-[50vw] ml-[50%] mr-[50%] w-screen bg-charcoal-900" />
-        <motion.div
-          style={{ opacity }}
-          className="absolute inset-0 flex items-center justify-center"
-        >
-          <div className="w-full h-full max-w-[100vw] max-h-[100vh] flex items-center justify-center">
-            <WireframeScene />
-          </div>
-        </motion.div>
-      </div>
+      {/* Layered background: base, aurora, grid floor, particle network */}
+      <div className="absolute inset-0 bg-charcoal-900" />
+      <motion.div style={{ scale: bgScale, opacity }} className="absolute inset-0">
+        <Aurora intensity={1.2} />
+        <GridFloor />
+        <NetworkScene />
+        {/* Vignette to keep focus center-stage */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 80% 60% at 50% 45%, transparent 40%, rgba(10,10,10,0.85) 100%)',
+          }}
+        />
+      </motion.div>
 
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
         className="relative z-10 max-w-7xl mx-auto px-8 text-center"
       >
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight px-2 sm:px-4"
+        {/* Eyebrow badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -12, filter: 'blur(6px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="inline-flex items-center gap-2.5 glass-strong rounded-full px-5 py-2 mb-8"
         >
-          {/* Mobile: Wider horizontal layout */}
-          <span className="block sm:hidden">
-            <span className="text-gradient inline">AI</span>{' '}
-            <span className="text-gradient inline">Infrastructure</span>
+          <span className="w-2 h-2 rounded-full bg-teal-300 pulse-dot" />
+          <span className="text-xs sm:text-sm font-medium tracking-widest uppercase text-gray-300">
+            The AI Operating System for Freight
           </span>
-          <span className="block sm:hidden mt-1">
-            <span className="inline">for</span>{' '}
-            <span className="inline">Complex</span>
-          </span>
-          <span className="block sm:hidden mt-1">Logistics</span>
-          
-          {/* Desktop: Original stacked layout */}
-          <span className="hidden sm:block text-gradient">AI Infrastructure</span>
-          <span className="hidden sm:block mt-2">for Complex Logistics</span>
-        </motion.h1>
+        </motion.div>
+
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight px-2 sm:px-4">
+          <WordReveal text="AI Infrastructure" shimmer className="block" delay={0.15} />
+          <WordReveal text="for Complex Logistics" className="block mt-1 sm:mt-2" delay={0.4} />
+        </h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-lg sm:text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed px-4"
+          initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 0.8, delay: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="text-lg sm:text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed px-4"
         >
-          We make logistics smarter. Our AI-powered platform automates end-to-end freight operations — from lead generation to final delivery documentation. One intelligent system replacing fragmented manual processes, saving thousands of hours and millions in costs.
+          We make logistics smarter. Our AI-powered platform automates end-to-end freight
+          operations — from lead generation to final delivery documentation. One intelligent
+          system replacing fragmented manual processes, saving thousands of hours and millions
+          in costs.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9, ease: [0.4, 0, 0.2, 1] }}
-          className="flex items-center justify-center gap-6"
+          transition={{ duration: 0.8, delay: 0.95, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            type="button"
-            aria-label="Request a quote"
-            onClick={() => {
-              const el = document.getElementById('contact')
-              if (el) el.scrollIntoView({ behavior: 'smooth' })
-            }}
-            className="relative px-10 py-4 rounded-2xl overflow-hidden group"
-          >
-            <div className="absolute inset-0 bg-white" />
-            <div className="absolute inset-0 bg-gradient-to-r from-white to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute -inset-1 bg-white/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <span className="relative text-black font-bold text-lg">Get a Quote</span>
-          </motion.button>
+          <MagneticButton>
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              type="button"
+              aria-label="Request a quote"
+              onClick={() => smoothScrollTo('contact')}
+              className="relative px-10 py-4 rounded-2xl overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-white" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white to-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-1 bg-white/25 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="shine-bar" />
+              <span className="relative text-black font-bold text-lg">Get a Quote</span>
+            </motion.button>
+          </MagneticButton>
 
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            href="https://structureai.site"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View the demo"
-            className="relative px-10 py-4 rounded-2xl overflow-hidden group"
-          >
-            <div className="absolute inset-0 glass" />
-            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <span className="relative text-white font-semibold text-lg">See Demo</span>
-          </motion.a>
+          <MagneticButton>
+            <motion.a
+              whileTap={{ scale: 0.97 }}
+              href="https://structureai.site"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View the demo"
+              className="relative inline-flex px-10 py-4 rounded-2xl overflow-hidden group glow-border"
+            >
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <span className="relative text-white font-semibold text-lg">See Demo</span>
+            </motion.a>
+          </MagneticButton>
         </motion.div>
       </motion.div>
 
-      {/* Arrow Down Navigation */}
+      {/* Scroll cue */}
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.2, delay: 0.4 }}
+        transition={{ duration: 0.6, delay: 1.4 }}
         style={{ opacity }}
+        aria-label="Scroll to next section"
         onClick={() => {
-          // Find current section and scroll to next
           const sections = document.querySelectorAll('[id^="section-"]')
           const scrollY = window.scrollY
           const viewportHeight = window.innerHeight
-          
           for (let i = 0; i < sections.length; i++) {
             const section = sections[i] as HTMLElement
-            const sectionTop = section.offsetTop
-            
-            // If current scroll is above this section's bottom, scroll to it
-            if (sectionTop > scrollY + viewportHeight * 0.3) {
-              section.scrollIntoView({ behavior: 'smooth' })
+            if (section.offsetTop > scrollY + viewportHeight * 0.3) {
+              smoothScrollTo(section.id, 0)
               break
             }
           }
@@ -133,7 +135,7 @@ export default function Hero() {
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
           className="w-12 h-12 rounded-full border-2 border-white/30 flex items-center justify-center group-hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5"
         >
           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,227 +147,204 @@ export default function Hero() {
   )
 }
 
-// Massive Wireframe Scene Component (OPTIMIZED)
-function WireframeScene() {
+/** Perspective grid floor receding to the horizon. */
+function GridFloor() {
+  return (
+    <div
+      aria-hidden
+      className="absolute inset-x-0 bottom-0 h-[45%] pointer-events-none"
+      style={{ perspective: '600px' }}
+    >
+      <div
+        className="absolute inset-x-[-40%] -bottom-1/4 top-0"
+        style={{
+          transform: 'rotateX(62deg)',
+          transformOrigin: 'top center',
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+          animation: 'grid-scroll 3.5s linear infinite',
+          maskImage: 'linear-gradient(to bottom, transparent, black 30%, black 75%, transparent)',
+          WebkitMaskImage:
+            'linear-gradient(to bottom, transparent, black 30%, black 75%, transparent)',
+        }}
+      />
+    </div>
+  )
+}
+
+/** Depth-projected particle network with mouse parallax. */
+function NetworkScene() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    // Mobile-safe sizing - BIGGER on mobile
     const isMobile = window.innerWidth < 768
-    const viewportWidth = window.innerWidth
-    const viewportHeight = window.innerHeight
-    const scale = isMobile ? 0.85 : 0.7  // Bigger scale on mobile
-    
-    canvas.width = viewportWidth * scale
-    canvas.height = viewportHeight * scale
-    canvas.style.width = '100%'
-    canvas.style.height = '100%'
-    canvas.style.maxWidth = '100vw'
-    canvas.style.maxHeight = '100vh'
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
 
-    let animationFrame: number
+    let width = window.innerWidth
+    let height = window.innerHeight
+
+    const setSize = () => {
+      width = window.innerWidth
+      height = window.innerHeight
+      canvas.width = width * dpr
+      canvas.height = height * dpr
+      canvas.style.width = '100%'
+      canvas.style.height = '100%'
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
+    setSize()
+
+    // Nodes with a depth coordinate for parallax + size falloff
+    const nodeCount = isMobile ? 26 : 60
+    const nodes = Array.from({ length: nodeCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      z: Math.random(), // 0 = far, 1 = near
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+      twinkle: Math.random() * Math.PI * 2,
+    }))
+
+    const mouse = { x: width / 2, y: height / 2, tx: width / 2, ty: height / 2 }
+    const onMouseMove = (e: MouseEvent) => {
+      mouse.tx = e.clientX
+      mouse.ty = e.clientY
+    }
+    window.addEventListener('mousemove', onMouseMove)
+
+    let animationFrame = 0
     let time = 0
-    let lastFrameTime = Date.now()
-    const targetFPS = 30 // Cap at 30fps for better performance
+    let lastFrameTime = performance.now()
+    const targetFPS = isMobile ? 28 : 45
+    const linkDist = isMobile ? 130 : 170
 
-    // Particle system for route lines (REDUCED)
-    const particleCount = isMobile ? 20 : 40 // Much fewer particles
-    const particles: Array<{
-      x: number
-      y: number
-      vx: number
-      vy: number
-      size: number
-      opacity: number
-    }> = []
-
-    // Create particles - KEEP IN SAFE ZONE
-    const margin = canvas.width * 0.1
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: margin + Math.random() * (canvas.width - margin * 2),
-        y: margin + Math.random() * (canvas.height - margin * 2),
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.5 + 0.3,
-      })
-    }
-
-    // Create nodes for network - KEEP IN SAFE ZONE
-    const nodeCount = isMobile ? 6 : 10
-    const safeMargin = canvas.width * 0.1 // 10% margin
-    const nodes: Array<{ x: number; y: number; radius: number }> = []
-    for (let i = 0; i < nodeCount; i++) {
-      nodes.push({
-        x: safeMargin + Math.random() * (canvas.width - safeMargin * 2),
-        y: safeMargin + Math.random() * (canvas.height - safeMargin * 2),
-        radius: Math.random() * 20 + 15,
-      })
-    }
-
-    function animate() {
-      if (!ctx || !canvas) return
-
-      // FPS throttling
-      const now = Date.now()
-      const elapsed = now - lastFrameTime
-      if (elapsed < 1000 / targetFPS) {
-        animationFrame = requestAnimationFrame(animate)
-        return
-      }
+    function animate(now: number) {
+      animationFrame = requestAnimationFrame(animate)
+      if (now - lastFrameTime < 1000 / targetFPS) return
       lastFrameTime = now
+      if (!ctx) return
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      time += 0.005
+      time += 0.012
+      mouse.x += (mouse.tx - mouse.x) * 0.06
+      mouse.y += (mouse.ty - mouse.y) * 0.06
 
-      // Draw connecting lines between nodes (OPTIMIZED - fewer checks)
-      if (!isMobile) {
-        ctx.strokeStyle = `rgba(255, 255, 255, 0.05)`
-        ctx.lineWidth = 1
-        for (let i = 0; i < nodes.length; i++) {
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[j].x - nodes[i].x
-            const dy = nodes[j].y - nodes[i].y
-            const distance = Math.sqrt(dx * dx + dy * dy)
-            
-            if (distance < 300) {
-              const opacity = 0.1 * (1 - distance / 300)
-              ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`
-              ctx.beginPath()
-              ctx.moveTo(nodes[i].x, nodes[i].y)
-              ctx.lineTo(nodes[j].x, nodes[j].y)
-              ctx.stroke()
-            }
+      ctx.clearRect(0, 0, width, height)
+
+      const parallaxX = (mouse.x - width / 2) / width
+      const parallaxY = (mouse.y - height / 2) / height
+
+      // Project node positions with depth-based parallax
+      const projected = nodes.map((n) => {
+        n.x += n.vx
+        n.y += n.vy
+        if (n.x < -20) n.x = width + 20
+        if (n.x > width + 20) n.x = -20
+        if (n.y < -20) n.y = height + 20
+        if (n.y > height + 20) n.y = -20
+        return {
+          px: n.x - parallaxX * 40 * n.z,
+          py: n.y - parallaxY * 40 * n.z,
+          z: n.z,
+          twinkle: n.twinkle,
+        }
+      })
+
+      // Links
+      ctx.lineWidth = 1
+      for (let i = 0; i < projected.length; i++) {
+        for (let j = i + 1; j < projected.length; j++) {
+          const a = projected[i]
+          const b = projected[j]
+          const dx = b.px - a.px
+          const dy = b.py - a.py
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < linkDist) {
+            const depth = (a.z + b.z) / 2
+            const alpha = (1 - dist / linkDist) * 0.14 * (0.4 + depth * 0.6)
+            ctx.strokeStyle = `rgba(180, 220, 255, ${alpha})`
+            ctx.beginPath()
+            ctx.moveTo(a.px, a.py)
+            ctx.lineTo(b.px, b.py)
+            ctx.stroke()
           }
         }
       }
 
-      // Draw and animate nodes
-      nodes.forEach((node, i) => {
-        const pulse = Math.sin(time * 2 + i) * 0.3 + 0.7
-        
-        // Outer glow
-        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * pulse)
-        gradient.addColorStop(0, `rgba(255, 255, 255, 0.2)`)
-        gradient.addColorStop(0.5, `rgba(255, 255, 255, 0.05)`)
-        gradient.addColorStop(1, `rgba(255, 255, 255, 0)`)
-        
-        ctx.fillStyle = gradient
+      // Nodes with twinkle + glow
+      projected.forEach((p) => {
+        const pulse = Math.sin(time * 2 + p.twinkle) * 0.35 + 0.65
+        const size = (0.8 + p.z * 2.2) * pulse
+
+        const glow = ctx.createRadialGradient(p.px, p.py, 0, p.px, p.py, size * 7)
+        glow.addColorStop(0, `rgba(255, 255, 255, ${0.16 * pulse * p.z})`)
+        glow.addColorStop(1, 'rgba(255, 255, 255, 0)')
+        ctx.fillStyle = glow
         ctx.beginPath()
-        ctx.arc(node.x, node.y, node.radius * pulse, 0, Math.PI * 2)
+        ctx.arc(p.px, p.py, size * 7, 0, Math.PI * 2)
         ctx.fill()
 
-        // Core
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.8 * pulse})`
+        ctx.fillStyle = `rgba(255, 255, 255, ${(0.35 + p.z * 0.55) * pulse})`
         ctx.beginPath()
-        ctx.arc(node.x, node.y, 3, 0, Math.PI * 2)
+        ctx.arc(p.px, p.py, size, 0, Math.PI * 2)
         ctx.fill()
       })
 
-      // Draw and animate particles - KEEP IN SAFE ZONE
-      const safeMargin = canvas.width * 0.1
-      particles.forEach((particle) => {
-        particle.x += particle.vx
-        particle.y += particle.vy
-
-        // Bounce off edges (keep within safe zone)
-        if (particle.x < safeMargin) particle.x = safeMargin
-        if (particle.x > canvas.width - safeMargin) particle.x = canvas.width - safeMargin
-        if (particle.y < safeMargin) particle.y = safeMargin
-        if (particle.y > canvas.height - safeMargin) particle.y = canvas.height - safeMargin
-
-        // Draw particle
-        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fill()
-
-        // Draw trail (ONLY on desktop)
-        if (!isMobile) {
-          const gradient = ctx.createLinearGradient(
-            particle.x,
-            particle.y,
-            particle.x - particle.vx * 20,
-            particle.y - particle.vy * 20
-          )
-          gradient.addColorStop(0, `rgba(255, 255, 255, ${particle.opacity * 0.5})`)
-          gradient.addColorStop(1, `rgba(255, 255, 255, 0)`)
-          
-          ctx.strokeStyle = gradient
-          ctx.lineWidth = particle.size
-          ctx.beginPath()
-          ctx.moveTo(particle.x, particle.y)
-          ctx.lineTo(particle.x - particle.vx * 20, particle.y - particle.vy * 20)
-          ctx.stroke()
-        }
-      })
-
-      // Draw wireframe plane (KEEP WITHIN BOUNDS)
-      const planeX = canvas.width * 0.5 + Math.sin(time * 0.5) * (canvas.width * 0.15) // Keep centered
-      const planeY = canvas.height * 0.4 + Math.cos(time * 0.3) * (canvas.height * 0.08)
-      const planeRotation = time * 0.2
+      // Wireframe plane drifting across the network
+      const planeX = width * 0.5 + Math.sin(time * 0.4) * width * 0.18
+      const planeY = height * 0.38 + Math.cos(time * 0.25) * height * 0.07
+      const heading = Math.cos(time * 0.4) > 0 ? 0.08 : Math.PI - 0.08
 
       ctx.save()
       ctx.translate(planeX, planeY)
-      ctx.rotate(planeRotation)
-      
-      // Plane body
-      ctx.strokeStyle = `rgba(255, 255, 255, 0.4)`
+      ctx.rotate(heading + Math.sin(time * 0.8) * 0.05)
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)'
+      ctx.lineWidth = 1.5
+      ctx.beginPath()
+      ctx.moveTo(-40, 0)
+      ctx.lineTo(40, 0)
+      ctx.lineTo(32, -7)
+      ctx.lineTo(32, 7)
+      ctx.lineTo(40, 0)
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(-14, 0)
+      ctx.lineTo(-21, -26)
+      ctx.lineTo(7, -26)
+      ctx.lineTo(0, 0)
+      ctx.moveTo(-14, 0)
+      ctx.lineTo(-21, 26)
+      ctx.lineTo(7, 26)
+      ctx.lineTo(0, 0)
+      ctx.stroke()
+
+      // Trailing glow line
+      const trail = ctx.createLinearGradient(-40, 0, -160, 0)
+      trail.addColorStop(0, 'rgba(140, 200, 255, 0.35)')
+      trail.addColorStop(1, 'rgba(140, 200, 255, 0)')
+      ctx.strokeStyle = trail
       ctx.lineWidth = 2
       ctx.beginPath()
-      ctx.moveTo(-60, 0)
-      ctx.lineTo(60, 0)
-      ctx.lineTo(50, -10)
-      ctx.lineTo(50, 10)
-      ctx.lineTo(60, 0)
+      ctx.moveTo(-40, 0)
+      ctx.lineTo(-160, 0)
       ctx.stroke()
 
-      // Wings
-      ctx.beginPath()
-      ctx.moveTo(-20, 0)
-      ctx.lineTo(-30, -40)
-      ctx.lineTo(10, -40)
-      ctx.lineTo(0, 0)
-      ctx.moveTo(-20, 0)
-      ctx.lineTo(-30, 40)
-      ctx.lineTo(10, 40)
-      ctx.lineTo(0, 0)
-      ctx.stroke()
-
-      // Glow effect
-      ctx.shadowBlur = 20
-      ctx.shadowColor = 'rgba(255, 255, 255, 0.5)'
-      ctx.strokeStyle = `rgba(255, 255, 255, 0.8)`
-      ctx.lineWidth = 1
-      ctx.beginPath()
-      ctx.moveTo(-60, 0)
-      ctx.lineTo(60, 0)
-      ctx.stroke()
-      
       ctx.restore()
-
-      animationFrame = requestAnimationFrame(animate)
     }
 
-    animate()
+    animationFrame = requestAnimationFrame(animate)
 
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-
-    window.addEventListener('resize', handleResize)
-
+    window.addEventListener('resize', setSize)
     return () => {
       cancelAnimationFrame(animationFrame)
-      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('resize', setSize)
+      window.removeEventListener('mousemove', onMouseMove)
     }
   }, [])
 
@@ -377,4 +356,3 @@ function WireframeScene() {
     />
   )
 }
-

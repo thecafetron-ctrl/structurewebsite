@@ -31,6 +31,8 @@ export default function Header() {
 
   const navItems = [
     { name: 'Platform', href: '/platform' },
+    { name: 'LoadHawk', href: '/loadhawk' },
+    { name: 'AI for Logistics', href: '/solutions/ai-for-logistics' },
     { name: 'Use Cases', href: '/use-cases' },
     { name: 'Contact', href: '/contact' },
     { name: 'Insights', href: '/blog' },
@@ -45,7 +47,11 @@ export default function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="glass rounded-xl sm:rounded-2xl px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between">
+          <div
+            className={`rounded-xl sm:rounded-2xl px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between transition-all duration-500 ${
+              isScrolled ? 'glass-strong shadow-[0_8px_40px_rgba(0,0,0,0.5)]' : 'glass'
+            }`}
+          >
             {/* Logo - Clickable to home */}
             <Link href="/">
               <motion.div
@@ -102,6 +108,7 @@ export default function Header() {
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute inset-0 bg-white/5 blur-xl" />
                 </div>
+                <span className="shine-bar" />
                 <span className="relative text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap">Get a Quote</span>
               </motion.a>
 

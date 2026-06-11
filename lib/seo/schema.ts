@@ -13,7 +13,22 @@ export function organizationSchema(args?: {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
     name: BRAND_NAME,
+    alternateName: ['Structure', 'Structure Logistics', 'Structure AI'],
+    description:
+      'STRUCTURE builds AI for logistics: an automation platform for freight forwarders, freight brokerages, and 3PLs that handles quoting, dispatch, invoicing, customs documentation, and lead generation.',
+    slogan: 'AI Infrastructure for Complex Logistics',
+    knowsAbout: [
+      'AI for logistics',
+      'AI for freight brokerage',
+      'freight forwarding automation',
+      '3PL automation',
+      'freight quoting automation',
+      'customs documentation automation',
+      'dispatch automation',
+      'logistics invoice automation',
+    ],
     url: siteUrl,
     logo,
     sameAs: args?.sameAs?.length ? args.sameAs : undefined,
@@ -38,7 +53,49 @@ export function softwareApplicationSchema() {
     operatingSystem: 'Web',
     url: getSiteUrl(),
     description:
-      'B2B AI logistics software for freight forwarders and 3PLs. Automates dispatch workflows, invoice processing, and customs documentation.',
+      'AI for logistics and freight brokerage. B2B software that automates freight quoting, dispatch workflows, invoice processing, customs documentation, and lead generation for freight forwarders, brokers, and 3PLs.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      description: 'Custom pricing — request a quote.',
+    },
+  }
+}
+
+export function websiteSchema() {
+  const siteUrl = getSiteUrl()
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    name: BRAND_NAME,
+    alternateName: ['Structure', 'Structure Logistics', 'Structure AI Logistics Platform'],
+    url: siteUrl,
+    publisher: { '@id': `${siteUrl}/#organization` },
+  }
+}
+
+export function serviceSchema(args: {
+  name: string
+  description: string
+  path: string
+  serviceType: string
+}) {
+  const siteUrl = getSiteUrl()
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: args.name,
+    description: args.description,
+    url: absoluteUrl(args.path),
+    serviceType: args.serviceType,
+    areaServed: 'Worldwide',
+    provider: { '@id': `${siteUrl}/#organization` },
+    audience: {
+      '@type': 'BusinessAudience',
+      name: 'Freight forwarders, freight brokerages, and 3PLs',
+    },
   }
 }
 

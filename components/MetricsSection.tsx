@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
+import TiltCard from '@/components/fx/TiltCard'
 
 export default function MetricsSection() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -193,6 +194,7 @@ function MetricCard({ value, suffix, label, delay, isInView, color }: MetricCard
       transition={{ duration: 1, delay, ease: [0.4, 0, 0.2, 1] }}
       className="relative"
     >
+      <TiltCard className="group rounded-3xl">
       <div className="glass rounded-3xl p-8 relative overflow-hidden group hover:bg-white/5 transition-all duration-500">
         {/* Background animation */}
         <div className="absolute inset-0 opacity-30">
@@ -231,6 +233,7 @@ function MetricCard({ value, suffix, label, delay, isInView, color }: MetricCard
           />
         </div>
       </div>
+      </TiltCard>
     </motion.div>
   )
 }

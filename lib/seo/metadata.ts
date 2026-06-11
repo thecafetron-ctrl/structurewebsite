@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { absoluteUrl, BRAND_NAME, getSiteUrl } from './site'
 
-export const DEFAULT_OG_IMAGE_PATH = '/logo-structure.svg'
+// Served by app/opengraph-image.tsx (generated PNG — SVGs are not rendered by
+// social platforms / link unfurlers)
+export const DEFAULT_OG_IMAGE_PATH = '/opengraph-image'
 
 type RobotsDirectives = NonNullable<Metadata['robots']>
 type OpenGraphType = 'website' | 'article'
@@ -19,11 +21,11 @@ export function baseMetadata(): Metadata {
     metadataBase: new URL(siteUrl),
     applicationName: BRAND_NAME,
     title: {
-      default: `${BRAND_NAME} — AI Logistics Automation`,
+      default: `${BRAND_NAME} — AI for Logistics & Freight Brokerage`,
       template: `%s | ${BRAND_NAME}`,
     },
     description:
-      'AI logistics platform for freight forwarders and 3PLs. Automate dispatch, invoicing, and customs workflows to reduce manual work and improve quote turnaround.',
+      'STRUCTURE is the AI platform for logistics and freight brokerage. Automate quoting, dispatch, invoicing, and customs workflows to cut manual work and respond to quotes in minutes.',
     alternates: {
       canonical: '/',
     },

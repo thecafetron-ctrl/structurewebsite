@@ -34,11 +34,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: absoluteUrl('/'), changeFrequency: 'weekly', priority: 1 },
     { url: absoluteUrl('/platform'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: absoluteUrl('/loadhawk'), changeFrequency: 'monthly', priority: 0.95 },
     { url: absoluteUrl('/use-cases'), changeFrequency: 'monthly', priority: 0.8 },
     { url: absoluteUrl('/contact'), changeFrequency: 'monthly', priority: 0.9 },
     { url: absoluteUrl('/blog'), changeFrequency: 'weekly', priority: 0.7 },
 
     // Solutions (indexable)
+    { url: absoluteUrl('/solutions/ai-for-logistics'), changeFrequency: 'monthly', priority: 0.95 },
+    { url: absoluteUrl('/solutions/ai-for-freight-brokerage'), changeFrequency: 'monthly', priority: 0.95 },
     { url: absoluteUrl('/solutions/ai-dispatch'), changeFrequency: 'monthly', priority: 0.9 },
     { url: absoluteUrl('/solutions/ai-invoices'), changeFrequency: 'monthly', priority: 0.9 },
     { url: absoluteUrl('/solutions/ai-customs'), changeFrequency: 'monthly', priority: 0.9 },

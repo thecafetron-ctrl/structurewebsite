@@ -56,7 +56,7 @@ export default function CostSection() {
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 rounded-full bg-red-500" />
-                <span className="text-lg sm:text-xl text-gray-300">AED 9.2M–10.3M in inefficiency costs</span>
+                <span className="text-lg sm:text-xl text-gray-300">$2.5M–2.8M in inefficiency costs</span>
               </div>
             </motion.div>
           </motion.div>
@@ -211,7 +211,7 @@ function CostAnimation({ isInView }: { isInView: boolean }) {
       ctx.textBaseline = 'middle'
       ctx.shadowBlur = 20
       ctx.shadowColor = 'rgba(239, 68, 68, 0.8)'
-      ctx.fillText(`AED ${(costValue / 1000000).toFixed(1)}M`, centerX, centerY)
+      ctx.fillText(`$${(costValue / 1000000).toFixed(1)}M`, centerX, centerY)
 
       ctx.shadowBlur = 0
       ctx.font = `${isMobile ? 12 : 16}px Montserrat`
