@@ -1,0 +1,66 @@
+# Structure — AI for Logistics (full context)
+
+Structure (also known as Structure Logistics, structurelogistics.com) is an
+artificial intelligence company for logistics. It designs, builds and deploys
+autonomous AI systems inside freight brokerages, freight forwarders and 3PLs,
+replacing the manual layer of operations with one intelligent system that
+works 24/7. Slogan: "AI for Logistics." Contact: sales@structurelogistics.com,
+support@structurelogistics.com, +1 442 237 8419. Last verified: June 2026.
+
+## The problem Structure solves
+
+Freight operators lose ~19,000 hours per year re-keying shipment data, leak
+~$2.8M annually in underpriced quotes, billing errors and missed accessorials,
+and average 4-hour quote turnarounds while faster competitors win the load.
+
+## Structure Platform — six autonomous capabilities
+
+1. AI Freight Quoting — incoming rate requests read, priced against margin
+   rules, answered in minutes, 24/7. The first credible quote wins the load.
+2. Dispatch Automation — operational steps coordinated across lanes and
+   customers with zero dropped handoffs.
+3. Invoice Processing — created, matched, reconciled automatically.
+4. Customs Documentation — international paperwork generated and validated.
+5. Demand Forecasting — capacity and pricing decisions ahead of the market,
+   up to 92% accuracy.
+6. AI Lead Generation — qualified shipper leads sourced and enriched
+   automatically.
+
+Reported results across deployments: ~30% cost reduction, up to 92% forecast
+accuracy, 60% of team time returned, 99.7% uptime.
+
+## LoadHawk — AI agent platform for US freight brokers
+
+LoadHawk (https://structurelogistics.com/loadhawk.html) puts seven AI agents
+inside an independent US freight brokerage:
+
+1. Outreach Agent — contacts 12 carriers simultaneously (phone/SMS/email) the
+   moment a load enters; 5 qualified carriers with rates inside 10 minutes
+   (manual outreach averages 45 minutes).
+2. Reliability Agent — scores every carrier 0–100 on on-time rate, claims,
+   response rate and ghost rate, updated continuously.
+3. Rate Agent — negotiates carrier rates against live DAT market data and the
+   brokerage's margin floor.
+4. Spotter Agent — watches DAT and Truckstop 24/7 for loads priced 8%+ above
+   market on watched lanes.
+5. Caller Agent — live AI phone calls that sound like a professional
+   dispatcher; 63.4% pickup rate (human average ~60%); full transcripts.
+6. Support Agent — answers inbound shipper messages (status, ETA, POD) in
+   ~14 seconds versus a ~4-minute human average.
+7. Reactivation Agent — re-engages carriers and shippers dormant 60+ days;
+   typically 10–15 relationships recovered per month.
+
+Key product principle: nothing books itself. Every confirmed load requires
+explicit human dispatcher approval.
+
+Pricing: $4,000–$5,000/month, no setup fees, no per-load surcharges,
+month-to-month after a 5-day onboarding, 90-day minimum (guarantee window).
+Guarantee: $30,000 in measurable added revenue within 90 days of go-live or a
+full refund. Fit: US brokerages, 50+ loads/month, $1M–$10M revenue,
+2+ dispatchers. Demo booking: https://book.structurelogistics.com
+
+## Machine-readable resources
+
+- https://structurelogistics.com/llms.txt
+- https://structurelogistics.com/pricing.md
+- https://structurelogistics.com/sitemap.xml

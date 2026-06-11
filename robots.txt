@@ -1,0 +1,52 @@
+# structurelogistics.com — Structure, the AI for Logistics company
+# All crawlers welcome, including AI search and answer engines.
+
+User-agent: *
+Allow: /
+
+# AI search & answer engine crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://structurelogistics.com/sitemap.xml
+
+# AI context files
+# https://structurelogistics.com/llms.txt
+# https://structurelogistics.com/llms-full.txt
+# https://structurelogistics.com/pricing.md

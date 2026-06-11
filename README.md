@@ -1,154 +1,66 @@
-# STRUCTURE — Premium AI Logistics Landing Page
+# STRUCTURE — structurelogistics.com
 
-An insanely premium, visually aggressive, luxury enterprise website for STRUCTURE, an AI logistics company.
+The main marketing site for **Structure** (AI for Logistics) with a dedicated
+**LoadHawk** product page.
 
-## 🎨 Design Philosophy
+## Stack
 
-- **Apple-level polish** with automotive brand cinematics
-- **Fashion week minimalism** with intentional pixels
-- **Luxury infrastructure software** aesthetic
-- **60fps smooth animations** with cinematic easing
-- **Massive graphics** (50-70% of screen per section)
-- **Unique animations** for each section
+Pure static site — zero build step, zero dependencies to install.
 
-## ✨ Features
+- `index.html` — main Structure site (hero network canvas, horizontal platform
+  scroll, inverted LoadHawk feature, impact metrics, process, footer)
+- `loadhawk.html` — LoadHawk product page (radar canvas hero, 7 agents,
+  pipeline, $30K guarantee, fit criteria)
+- `css/style.css` — monochrome design system with electric-cyan/violet accent layer (Archivo + Instrument Serif + Fragment Mono)
+- `js/fx.js` — canvas VFX engine (logistics network map, radar sweep)
+- `js/main.js` — Lenis smooth scroll + GSAP ScrollTrigger orchestration
+  (preloader, custom cursor, magnetic buttons, split-text reveals, counters,
+  scroll-velocity marquees, pinned horizontal section)
 
-- **Premium Glass Header** — Floating navigation with backdrop blur
-- **Hero Section** — Massive 3D wireframe scene with animated cargo plane
-- **Chaos to Order** — Visual transformation from tangled routes to structured flow
-- **Intelligent Core** — Orbital animation showing 6-step process flow
-- **Route Optimization** — 3D globe with learning route animations
-- **Load Matching** — Physics-based capacity matching with geometric shapes
-- **Demand Forecasting** — Elegant data visualization with predictive curves
-- **Document Intelligence** — Paper-to-data transformation animation
-- **Enterprise Scale** — Network expansion with 100+ animated nodes
-- **Metrics Section** — Animated counters with unique visualizations
-- **Final CTA** — Ambient animation with premium button effects
+GSAP and Lenis load from CDN. Fonts load from Google Fonts.
 
-## 🚀 Tech Stack
-
-- **Next.js 14** — React framework
-- **TypeScript** — Type safety
-- **Tailwind CSS** — Utility-first styling
-- **Framer Motion** — Smooth animations
-- **GSAP ScrollTrigger** — Scroll-based animations
-- **Lenis** — Smooth scroll library
-- **Canvas API** — Custom animations
-
-## 📦 Installation
-
-1. **Clone or navigate to the project directory:**
-   ```bash
-   cd structurewebsite
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Run development server:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser:**
-   ```
-   http://localhost:3000
-   ```
-
-## 🏗️ Build for Production
+## Preview locally
 
 ```bash
-npm run build
-npm start
+python3 -m http.server 8743
+# open http://localhost:8743
 ```
 
-## 🎯 Animation Principles
+## Deploy
 
-Every section features:
-- ✅ Unique motion system (no repeats)
-- ✅ Smooth cinematic easing (cubic-bezier curves)
-- ✅ Scroll-triggered reveals (intersection observer)
-- ✅ Idle animations (subtle, always moving)
-- ✅ Parallax depth where appropriate
-- ✅ Particle effects for beauty
-- ✅ Gradient animations with subtle shifts
+Any static host works. Examples:
 
-## 🎨 Visual System
+**Netlify:** drag the folder into the Netlify dashboard, or
+`netlify deploy --prod --dir .` — then point structurelogistics.com at it.
 
-**Colors:**
-- Deep charcoal black backgrounds (#0a0a0a)
-- Pure white typography
-- Silver-to-graphite gradients
-- Soft glows and rim lighting
+**Vercel:** `vercel --prod`
 
-**Typography:**
-- Font: Montserrat (300-900 weights)
-- Headlines: MASSIVE (72px+), bold, dramatic
-- Body: Restrained, elegant, readable
+No environment variables, no build command. Publish directory is the repo root.
 
-**Effects:**
-- Gradients everywhere
-- Blur effects and depth
-- Glass morphism
-- 3D transforms
-- Luxury materials
+## Lead capture
 
-## 📁 Project Structure
+The home page form (`#contact`) is Netlify Forms-ready (`data-netlify="true"` +
+honeypot). Deploy to Netlify and submissions appear under Site → Forms with
+zero extra setup (enable email notifications there). On any other host, the
+form gracefully falls back to opening a pre-filled email to
+sales@structurelogistics.com. LoadHawk page CTAs go to
+book.structurelogistics.com.
 
-```
-structurewebsite/
-├── app/
-│   ├── globals.css          # Global styles with noise texture
-│   ├── layout.tsx            # Root layout
-│   └── page.tsx              # Main landing page
-├── components/
-│   ├── Header.tsx            # Premium glass header
-│   ├── Hero.tsx              # Hero with wireframe animation
-│   ├── ChaosSection.tsx      # Chaos-to-order visualization
-│   ├── IntelligenceSection.tsx  # Orbital core animation
-│   ├── RouteSection.tsx      # 3D route optimization
-│   ├── LoadSection.tsx       # Capacity matching
-│   ├── ForecastSection.tsx   # Predictive data viz
-│   ├── DocumentSection.tsx   # Document transformation
-│   ├── ScaleSection.tsx      # Network expansion
-│   ├── MetricsSection.tsx    # Animated metrics
-│   └── FinalCTA.tsx          # Final call-to-action
-├── package.json
-├── tailwind.config.js
-├── tsconfig.json
-└── next.config.js
-```
+## SEO / AI-search layer
 
-## 🎬 What This Feels Like
+- JSON-LD on both pages: Organization, WebSite, Service, SoftwareApplication
+  (LoadHawk with pricing), FAQPage, BreadcrumbList
+- Visible FAQ + About sections mirror the schema (extractable answer blocks)
+- `robots.txt` explicitly allows GPTBot, ClaudeBot, PerplexityBot,
+  Google-Extended, Bingbot, CCBot and more
+- `sitemap.xml`, `llms.txt`, `llms-full.txt`, `pricing.md` (machine-readable
+  for AI agents)
+- After deploy: submit sitemap in Google Search Console + Bing Webmaster Tools
 
-- Opening a luxury car door
-- Unboxing an iPhone
-- Watching a Rolex commercial
-- High-end architecture visualization
-- Premium tech keynote
+## Notes
 
-**NOT:**
-- ❌ Startup landing page
-- ❌ SaaS dashboard
-- ❌ Corporate website
-- ❌ UI toolkit demo
-
-## 🔧 Customization
-
-All animations are self-contained within their components. To customize:
-
-1. **Colors:** Edit `tailwind.config.js` and component color values
-2. **Timing:** Adjust animation durations in component files
-3. **Content:** Update text in individual section components
-4. **Effects:** Modify canvas animations in each component
-
-## 📝 License
-
-This is a custom project for STRUCTURE.
-
----
-
-**Built with luxury in mind. Every pixel is intentional.**
-
+- All CTAs point to https://book.structurelogistics.com
+- Contact: sales@structurelogistics.com · support@structurelogistics.com · +1 442 237 8419
+- Respects `prefers-reduced-motion` (all animation disabled, content fully visible)
+- Mobile: horizontal platform section becomes a native swipe carousel; agent
+  cards expand by tap
