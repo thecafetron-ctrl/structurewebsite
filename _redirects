@@ -1,0 +1,9 @@
+/loadhawk            /loadhawk.html        301
+/platform            /#platform            301
+/contact             /#contact             301
+/use-cases           /#platform            301
+/playbook            /90-day-freight-scaling-playbook.pdf  301
+/ebook               /90-day-freight-scaling-playbook.pdf  301
+/blog/*              /                     301
+/solutions/*         /#platform            301
+/admin/*             /                     301
