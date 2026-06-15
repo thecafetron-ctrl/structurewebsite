@@ -75,7 +75,7 @@
   const preBar = document.getElementById("preBar");
   const preWord = document.getElementById("preWord");
   const WORDS = PAGE === "loadhawk"
-    ? ["OUTREACH", "RATES", "RELIABILITY", "CALLER", "SUPPORT", "BOOKED"]
+    ? ["OUTREACH", "RATES", "NEGOTIATING", "RELIABILITY", "CALLER", "SUPPORT", "BOOKED"]
     : ["QUOTING", "DISPATCH", "CUSTOMS", "FORECASTING", "ROUTING", "DELIVERED"];
 
   function runPreloader(done) {

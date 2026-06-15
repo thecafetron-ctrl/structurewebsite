@@ -38,26 +38,45 @@ inside an independent US freight brokerage:
    moment a load enters; 5 qualified carriers with rates inside 10 minutes
    (manual outreach averages 45 minutes).
 2. Reliability Agent — scores every carrier 0–100 on on-time rate, claims,
-   response rate and ghost rate, updated continuously.
+   response rate and ghost rate, verified against FMCSA records, updated
+   continuously. Carriers under the brokerage's threshold are never contacted.
 3. Rate Agent — negotiates carrier rates against live DAT market data and the
-   brokerage's margin floor.
+   brokerage's margin floor and ceiling; counters at the midpoint, walks away
+   below the floor, never exceeds the ceiling.
 4. Spotter Agent — watches DAT and Truckstop 24/7 for loads priced 8%+ above
    market on watched lanes.
 5. Caller Agent — live AI phone calls that sound like a professional
-   dispatcher; 63.4% pickup rate (human average ~60%); full transcripts.
+   dispatcher; 63.4% pickup rate versus a 40–50% human average on cold carrier
+   calls; every call recorded and transcribed.
 6. Support Agent — answers inbound shipper messages (status, ETA, POD) in
-   ~14 seconds versus a ~4-minute human average.
-7. Reactivation Agent — re-engages carriers and shippers dormant 60+ days;
-   typically 10–15 relationships recovered per month.
+   ~14 seconds versus a ~4-minute human average; claims and late-penalty
+   mentions escalate to a human.
+7. Reactivation Agent — re-engages carriers and shippers dormant 60+ days,
+   one by one; benchmark from one 30-day window: 13 relationships recovered,
+   $41,200 in load value returned.
 
 Key product principle: nothing books itself. Every confirmed load requires
 explicit human dispatcher approval.
 
-Pricing: $4,000–$5,000/month, no setup fees, no per-load surcharges,
-month-to-month after a 5-day onboarding, 90-day minimum (guarantee window).
-Guarantee: $30,000 in measurable added revenue within 90 days of go-live or a
-full refund. Fit: US brokerages, 50+ loads/month, $1M–$10M revenue,
-2+ dispatchers. Demo booking: https://book.structurelogistics.com
+Pricing: $4,000–$5,000/month flat, no setup fees, no per-load surcharges, no
+per-seat pricing, month-to-month after a 5-day onboarding, 90-day minimum
+(guarantee window). Guarantee: $30,000 in measurable added revenue within 90
+days of go-live or a full refund — a contractual term, not a marketing line.
+Fit: US brokerages, 50+ loads/month, $1M–$10M revenue, 2+ dispatchers.
+Demo booking: https://book.structurelogistics.com
+
+LoadHawk versus hiring another dispatcher: a dispatcher costs $55,000–$65,000
+per year plus benefits, works business hours, calls one carrier at a time and
+takes ~3 months to ramp. LoadHawk costs $48,000–$60,000 per year flat,
+contacts twelve carriers at once on every load, works 24/7/365, and is live
+in 5 days. It does not replace dispatchers — every booking requires human
+approval; it removes the phone marathon from their day.
+
+Cost-of-slow assumptions used on the LoadHawk page's ROI calculator (industry
+averages): ~10% of loads lost to slow response, $20–$80 per load leaked in
+gut-feel rate negotiation (modeled at $50), ~37 dispatcher-minutes saved per
+load. Integrations: DAT, Truckstop, FMCSA, McLeod LoadMaster, Turvo,
+Rose Rocket, Aljex, Twilio.
 
 ## Machine-readable resources
 
