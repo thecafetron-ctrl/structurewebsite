@@ -1,10 +1,14 @@
+# This was a Next.js app; it is now a plain static site. The Netlify dashboard
+# still has @netlify/plugin-nextjs enabled (origin: ui), which forces the deploy
+# to read from a `.next` directory. We can't remove that plugin from the repo,
+# so instead we stage the static site INTO `.next` at build time and publish it
+# from there. NETLIFY_NEXT_PLUGIN_SKIP stops the plugin from running its hooks.
+#
+# Clean long-term fix: uninstall the Next.js plugin in the Netlify UI, then
+# restore `publish = "."` and drop this build command.
 [build]
-  command = "echo static site - no build step"
-  publish = "."
+  command = "rm -rf .next && mkdir -p .next && rsync -a --exclude='.git' --exclude='node_modules' --exclude='.next' --exclude='.env*' --exclude='*.bak' ./ .next/ && echo 'Static site staged into .next'"
+  publish = ".next"
 
-# Site was migrated from Next.js to a plain static site, but the Netlify
-# dashboard still has @netlify/plugin-nextjs enabled. This tells that plugin
-# to skip itself so it stops aborting the build on `publish = "."`.
-# The clean fix is to uninstall the Next.js plugin in the Netlify UI.
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
