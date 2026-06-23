@@ -38,7 +38,7 @@
     const EVENTS = [
       { t: 0,   real: 0,    ag: "LOAD",        txt: "RECEIVED — CHI → ATL · DRY VAN · PICKUP THU 06:00" },
       { t: 2,   real: 0.9,  ag: "RELIABILITY", txt: "38 LANE CARRIERS FOUND → 12 SELECTED (SCORE ≥ 80)" },
-      { t: 4,   real: 1.9,  ag: "OUTREACH",    txt: "12 CARRIERS CONTACTED — 8 CALLS · 12 SMS · 12 EMAILS" },
+      { t: 4,   real: 1.9,  ag: "COVERAGE",    txt: "12 CARRIERS CONTACTED — 8 CALLS · 12 SMS · 12 EMAILS" },
       { t: 31,  real: 3.4,  ag: "CALLER",      txt: "J&M TRANSPORT PICKED UP — 14s RING" },
       { t: 58,  real: 4.8,  ag: "SMS ←",       txt: "MIDWEST FREIGHT: “CAN DO $2,100”" },
       { t: 66,  real: 5.8,  ag: "RATE",        txt: "DAT LANE AVG $1,920 · YOUR CEILING $1,975" },

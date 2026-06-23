@@ -13,7 +13,7 @@ Last updated: 2026-06-11
 - Minimum commitment: 90 days (the guarantee window)
 - Guarantee: $30,000 in measurable added revenue within 90 days of go-live,
   or a full refund (not partial)
-- Includes: all seven AI agents — Outreach (12 carriers contacted instantly),
+- Includes: all seven AI agents — Coverage (12 carriers contacted instantly),
   Rate (live DAT market data negotiation), Reliability (0–100 carrier scoring),
   Spotter (24/7 load-board watch), Caller (live AI phone calls, 63.4% pickup),
   Support (14-second shipper replies), Reactivation (dormant carrier recovery)
@@ -24,7 +24,7 @@ Last updated: 2026-06-11
 ## Structure Platform — custom AI deployments
 
 - Scope: AI freight quoting, dispatch automation, invoice processing,
-  customs documentation, demand forecasting, AI lead generation
+  customs documentation, demand forecasting
 - Pricing: scoped per operation — contact sales@structurelogistics.com
 - Regions: United States and Middle East
 - Typical results: ~30% cost reduction, up to 92% forecast accuracy,

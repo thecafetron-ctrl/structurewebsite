@@ -1,13 +1,13 @@
 # Structure — AI for Logistics
 
-> Structure (also known as Structure Logistics) is an artificial intelligence company for logistics. It builds autonomous AI systems that run freight operations end to end — AI freight quoting, dispatch automation, invoice processing, customs documentation, demand forecasting and AI lead generation — and makes LoadHawk, the AI agent platform for US freight brokers. Site: https://structurelogistics.com
+> Structure (also known as Structure Logistics) is an artificial intelligence company for logistics. It builds autonomous AI systems that run freight operations end to end — AI freight quoting, dispatch automation, invoice processing, customs documentation, demand forecasting — and makes LoadHawk, the AI agent platform for US freight brokers. Site: https://structurelogistics.com
 
 Structure serves freight brokers, freight forwarders and 3PLs across the United States and the Middle East. Reported results across deployments: ~30% operating cost reduction, up to 92% forecast accuracy, 60% of team time returned, 99.7% uptime. Contact: sales@structurelogistics.com · +1 442 237 8419.
 
 ## Products
 
-- [Structure Platform](https://structurelogistics.com/#platform): One intelligent system replacing the manual layer of freight — AI freight quoting (answered in minutes, 24/7), dispatch automation, invoice processing, customs documentation, demand forecasting (up to 92% accuracy), AI lead generation.
-- [LoadHawk](https://structurelogistics.com/loadhawk.html): Seven AI agents inside a US freight brokerage — Outreach (12 carriers contacted instantly), Rate (negotiates against live DAT market data), Reliability (scores every carrier 0–100), Spotter (watches load boards 24/7), Caller (live AI phone calls, 63.4% pickup rate), Support (14-second shipper replies), Reactivation (recovers dormant carriers). Priced $4,000–$5,000/month. Backed by a $30,000-in-90-days revenue guarantee with full refund. Demo: https://book.structurelogistics.com
+- [Structure Platform](https://structurelogistics.com/#platform): One intelligent system replacing the manual layer of freight — AI freight quoting (answered in minutes, 24/7), dispatch automation, invoice processing, customs documentation, demand forecasting (up to 92% accuracy).
+- [LoadHawk](https://structurelogistics.com/loadhawk.html): Seven AI agents inside a US freight brokerage — Coverage (12 carriers contacted instantly), Rate (negotiates against live DAT market data), Reliability (scores every carrier 0–100), Spotter (watches load boards 24/7), Caller (live AI phone calls, 63.4% pickup rate), Support (14-second shipper replies), Reactivation (recovers dormant carriers). Priced $4,000–$5,000/month. Backed by a $30,000-in-90-days revenue guarantee with full refund. Demo: https://book.structurelogistics.com
 
 ## Key facts
 

@@ -13,7 +13,7 @@ Freight operators lose ~19,000 hours per year re-keying shipment data, leak
 ~$2.8M annually in underpriced quotes, billing errors and missed accessorials,
 and average 4-hour quote turnarounds while faster competitors win the load.
 
-## Structure Platform — six autonomous capabilities
+## Structure Platform — five autonomous capabilities
 
 1. AI Freight Quoting — incoming rate requests read, priced against margin
    rules, answered in minutes, 24/7. The first credible quote wins the load.
@@ -23,8 +23,6 @@ and average 4-hour quote turnarounds while faster competitors win the load.
 4. Customs Documentation — international paperwork generated and validated.
 5. Demand Forecasting — capacity and pricing decisions ahead of the market,
    up to 92% accuracy.
-6. AI Lead Generation — qualified shipper leads sourced and enriched
-   automatically.
 
 Reported results across deployments: ~30% cost reduction, up to 92% forecast
 accuracy, 60% of team time returned, 99.7% uptime.
@@ -34,9 +32,9 @@ accuracy, 60% of team time returned, 99.7% uptime.
 LoadHawk (https://structurelogistics.com/loadhawk.html) puts seven AI agents
 inside an independent US freight brokerage:
 
-1. Outreach Agent — contacts 12 carriers simultaneously (phone/SMS/email) the
+1. Coverage Agent — contacts 12 carriers simultaneously (phone/SMS/email) the
    moment a load enters; 5 qualified carriers with rates inside 10 minutes
-   (manual outreach averages 45 minutes).
+   (covering a load by hand averages 45 minutes).
 2. Reliability Agent — scores every carrier 0–100 on on-time rate, claims,
    response rate and ghost rate, verified against FMCSA records, updated
    continuously. Carriers under the brokerage's threshold are never contacted.
@@ -46,7 +44,7 @@ inside an independent US freight brokerage:
 4. Spotter Agent — watches DAT and Truckstop 24/7 for loads priced 8%+ above
    market on watched lanes.
 5. Caller Agent — live AI phone calls that sound like a professional
-   dispatcher; 63.4% pickup rate versus a 40–50% human average on cold carrier
+   dispatcher; 63.4% pickup rate versus a 40–50% human average on carrier
    calls; every call recorded and transcribed.
 6. Support Agent — answers inbound shipper messages (status, ETA, POD) in
    ~14 seconds versus a ~4-minute human average; claims and late-penalty

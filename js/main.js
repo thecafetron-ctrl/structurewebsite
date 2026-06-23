@@ -75,7 +75,7 @@
   const preBar = document.getElementById("preBar");
   const preWord = document.getElementById("preWord");
   const WORDS = PAGE === "loadhawk"
-    ? ["OUTREACH", "RATES", "NEGOTIATING", "RELIABILITY", "CALLER", "SUPPORT", "BOOKED"]
+    ? ["COVERAGE", "RATES", "NEGOTIATING", "RELIABILITY", "CALLER", "SUPPORT", "BOOKED"]
     : ["QUOTING", "DISPATCH", "CUSTOMS", "FORECASTING", "ROUTING", "DELIVERED"];
 
   function runPreloader(done) {
@@ -441,18 +441,17 @@
       ["DOCS CLEARED", "{lane}", "AUTO", true],
       ["INVOICE MATCHED", "#{id}", "0 ERRORS", true],
       ["FORECAST UPDATED", "{lane}", "+{p}% DEMAND", false],
-      ["LEAD QUALIFIED", "SHIPPER #{id}", "ENRICHED", true],
       ["DISPATCH SYNCED", "{lane}", "0 HANDOFFS", false],
     ];
     const LH_EVENTS = [
-      ["OUTREACH", "12 CARRIERS PINGED", "{lane}", true],
+      ["COVERAGE", "12 CARRIERS PINGED", "{lane}", true],
       ["RATE AGENT", "COUNTERED +${d}", "{lane}", true],
       ["CALLER", "CARRIER PICKED UP", "{s}s RING", true],
       ["RELIABILITY", "CARRIER SCORED {sc}", "{lane}", false],
       ["SUPPORT", "ETA SENT TO SHIPPER", "14s", true],
       ["SPOTTER", "LOAD +{p}% OVER MARKET", "{lane}", true],
       ["REACTIVATION", "DORMANT CARRIER REPLIED", "61 DAYS", true],
-      ["OUTREACH", "5 RATES IN", "{m}m {s}s", true],
+      ["COVERAGE", "5 RATES IN", "{m}m {s}s", true],
     ];
     const EVENTS = PAGE === "loadhawk" ? LH_EVENTS : HOME_EVENTS;
     const rnd = function (a, b) { return Math.floor(a + Math.random() * (b - a)); };
