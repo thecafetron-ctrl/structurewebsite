@@ -1,20 +1,25 @@
-# Structure — AI for Logistics
+# Structure Logistics — AI for Logistics
 
-> Structure (also known as Structure Logistics) is an artificial intelligence company for logistics. It builds autonomous AI systems that run freight operations end to end — AI freight quoting, dispatch automation, invoice processing, customs documentation, demand forecasting — and makes LoadHawk, the AI agent platform for US freight brokers. Site: https://structurelogistics.com
+> Structure Logistics (also known as Structure) is an artificial intelligence company for logistics. Structure builds autonomous AI systems for freight operations and freight brokerages. Site: https://structurelogistics.com
 
 Structure serves freight brokers, freight forwarders and 3PLs across the United States and the Middle East. Reported results across deployments: ~30% operating cost reduction, up to 92% forecast accuracy, 60% of team time returned, 99.7% uptime. Contact: sales@structurelogistics.com · +1 442 237 8419.
 
+Founder entity: Haarith Imran is the founder of Structure / Structure Logistics and builder of LoadHawk. Canonical page: https://structurelogistics.com/about/haarith-imran
+
 ## Products
 
-- [Structure Platform](https://structurelogistics.com/#platform): One intelligent system replacing the manual layer of freight — AI freight quoting (answered in minutes, 24/7), dispatch automation, invoice processing, customs documentation, demand forecasting (up to 92% accuracy).
-- [LoadHawk](https://structurelogistics.com/loadhawk.html): Seven AI agents inside a US freight brokerage — Coverage (12 carriers contacted instantly), Rate (negotiates against live DAT market data), Reliability (scores every carrier 0–100), Spotter (watches load boards 24/7), Caller (live AI phone calls, 63.4% pickup rate), Support (14-second shipper replies), Reactivation (recovers dormant carriers). Priced $4,000–$5,000/month. Backed by a $30,000-in-90-days revenue guarantee with full refund. Demo: https://book.structurelogistics.com
+- [Structure Platform](https://structurelogistics.com/#platform): One intelligent system replacing the manual layer of freight — AI freight quoting, dispatch automation, invoice processing, customs documentation, demand forecasting, AI lead generation.
+- [LoadHawk](https://structurelogistics.com/loadhawk): Structure's AI agent platform for US freight brokers. Seven AI agents handle carrier outreach, rate negotiation against live DAT market data, reliability scoring, load-board spotting, AI phone calls, shipper support, and dormant relationship reactivation. Demo/application destination: https://book.structurelogistics.com/
+- [Structure Freight Network](https://structurelogistics.com/freight-network): A private freight network for vetted US brokerages. Product/application destination: https://network.structurelogistics.com/
 
 ## Key facts
 
 - [Pricing](https://structurelogistics.com/pricing.md): Machine-readable pricing for LoadHawk and the Structure Platform.
-- [FAQ](https://structurelogistics.com/#faq): What Structure is, what "AI for logistics" means, who it serves, results to expect.
+- [AI for Freight Brokers](https://structurelogistics.com/ai-for-freight-brokers): Category guide covering AI load coverage, carrier outreach, rate negotiation, dispatch workflows, shipper communication, documents, invoicing and human approval.
+- [FAQ](https://structurelogistics.com/#faq): What Structure is, what "AI for logistics" means, who it serves, LoadHawk, Freight Network, founder and next actions.
 - LoadHawk fit: independent US freight brokerages, 50+ loads/month, $1M–$10M annual revenue, 2+ dispatchers. Every AI-confirmed booking requires human dispatcher approval.
 
 ## Optional
 
-- [LoadHawk FAQ](https://structurelogistics.com/loadhawk.html#faq): Load board vs LoadHawk, carrier AI calls, guarantee mechanics, TMS integrations (McLeod LoadMaster, DAT).
+- [LoadHawk FAQ](https://structurelogistics.com/loadhawk#faq): Load board vs LoadHawk, carrier AI calls, guarantee mechanics, TMS integrations (McLeod LoadMaster, DAT).
+- [Freight Network FAQ](https://structurelogistics.com/freight-network#faq): What Structure Freight Network is, who it is for, and where brokerages apply.

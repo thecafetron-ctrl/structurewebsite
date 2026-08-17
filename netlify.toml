@@ -7,7 +7,7 @@
 # Clean long-term fix: uninstall the Next.js plugin in the Netlify UI, then
 # restore `publish = "."` and drop this build command.
 [build]
-  command = "rm -rf .next && mkdir -p .next && rsync -a --exclude='.git' --exclude='node_modules' --exclude='.next' --exclude='.env*' --exclude='*.bak' ./ .next/ && echo 'Static site staged into .next'"
+  command = "rm -rf .next && mkdir -p .next && rsync -a --exclude='.git' --exclude='node_modules' --exclude='.next' --exclude='.env*' --exclude='*.bak' --exclude='scripts/' --exclude='SEO_AI_AUTHORITY_NEXT_STEPS.md' ./ .next/ && echo 'Static site staged into .next'"
   publish = ".next"
 
 [build.environment]

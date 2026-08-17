@@ -3,6 +3,8 @@
   "private": true,
   "version": "2.0.0",
   "scripts": {
-    "build": "echo 'static site — nothing to build'"
+    "dev": "node scripts/serve-local.js",
+    "build": "echo 'static site — nothing to build'",
+    "indexnow": "bash scripts/submit-indexnow.sh"
   }
 }

@@ -1,52 +1,141 @@
-# structurelogistics.com — Structure, the AI for Logistics company
-# All crawlers welcome, including AI search and answer engines.
+# structurelogistics.com - Structure Logistics public marketing site.
+# Public pages are intended to be crawlable for search, AI search, retrieval,
+# and legitimate model-training crawlers that obey normal robots.txt rules.
+# Robots.txt is not a security mechanism; private data must stay unpublished.
 
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
-# AI search & answer engine crawlers — explicitly allowed
-User-agent: GPTBot
+# OpenAI: search, training, and user-triggered retrieval.
+User-agent: OAI-SearchBot
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
-User-agent: OAI-SearchBot
+User-agent: GPTBot
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
+# Perplexity search index.
 User-agent: PerplexityBot
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+# Anthropic / Claude: search, training, and user-triggered retrieval.
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
-User-agent: Claude-Web
+# Google Search and Google AI control tokens.
+User-agent: Googlebot
 Allow: /
-
-User-agent: anthropic-ai
-Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
 User-agent: GoogleOther
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
+User-agent: Google-CloudVertexBot
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+# Brave Search does not publish a differentiated crawler user-agent; it treats
+# Googlebot crawlability as the controlling signal.
+
+# Microsoft Bing / Copilot discovery.
 User-agent: Bingbot
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+# Apple search and Apple model-training control token.
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+# Other major legitimate public web indexes and AI/retrieval data sources.
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
-User-agent: cohere-ai
+User-agent: Amzn-SearchBot
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+User-agent: Amzn-User
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
 User-agent: CCBot
 Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+Disallow: /admin/
+Disallow: /scripts/
 
 Sitemap: https://structurelogistics.com/sitemap.xml
 
-# AI context files
+# Supplemental AI context files. These are not access-control mechanisms.
 # https://structurelogistics.com/llms.txt
 # https://structurelogistics.com/llms-full.txt
 # https://structurelogistics.com/pricing.md

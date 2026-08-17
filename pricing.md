@@ -1,8 +1,8 @@
 # Pricing — Structure (Structure Logistics)
 
-Structure is the AI for logistics company: autonomous AI systems for freight
-brokers, forwarders and 3PLs. https://structurelogistics.com
-Last updated: 2026-06-11
+Structure Logistics is the AI for logistics company: autonomous AI systems for
+freight brokers, forwarders and 3PLs. https://structurelogistics.com
+Last updated: 2026-08-17
 
 ## LoadHawk — AI agent platform for US freight brokers
 
@@ -19,7 +19,8 @@ Last updated: 2026-06-11
   Support (14-second shipper replies), Reactivation (dormant carrier recovery)
 - Fit: independent US brokerages, 50+ loads/month, $1M–$10M annual revenue,
   2+ dispatchers
-- Demo: https://book.structurelogistics.com
+- Information page: https://structurelogistics.com/loadhawk
+- Demo: https://book.structurelogistics.com/
 
 ## Structure Platform — custom AI deployments
 
@@ -29,6 +30,13 @@ Last updated: 2026-06-11
 - Regions: United States and Middle East
 - Typical results: ~30% cost reduction, up to 92% forecast accuracy,
   60% of team time returned, 99.7% uptime
+
+## Structure Freight Network
+
+- Scope: private freight network for vetted US brokerages
+- Information page: https://structurelogistics.com/freight-network
+- Product/application destination: https://network.structurelogistics.com/
+- Pricing: see the Network application destination for current terms
 
 ## Contact
 

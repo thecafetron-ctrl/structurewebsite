@@ -2,14 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://structurelogistics.com/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://structurelogistics.com/loadhawk.html</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://structurelogistics.com/loadhawk</loc>
+  </url>
+  <url>
+    <loc>https://structurelogistics.com/freight-network</loc>
+  </url>
+  <url>
+    <loc>https://structurelogistics.com/ai-for-freight-brokers</loc>
+  </url>
+  <url>
+    <loc>https://structurelogistics.com/about/haarith-imran</loc>
   </url>
 </urlset>

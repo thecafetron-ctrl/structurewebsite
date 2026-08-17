@@ -1,11 +1,15 @@
-# Structure — AI for Logistics (full context)
+# Structure Logistics — AI for Logistics (full context)
 
-Structure (also known as Structure Logistics, structurelogistics.com) is an
+Structure Logistics (also known as Structure, structurelogistics.com) is an
 artificial intelligence company for logistics. It designs, builds and deploys
 autonomous AI systems inside freight brokerages, freight forwarders and 3PLs,
 replacing the manual layer of operations with one intelligent system that
 works 24/7. Slogan: "AI for Logistics." Contact: sales@structurelogistics.com,
-support@structurelogistics.com, +1 442 237 8419. Last verified: June 2026.
+support@structurelogistics.com, +1 442 237 8419. Last updated: 2026-08-17.
+
+Founder/entity fact: Haarith Imran is the founder of Structure / Structure
+Logistics and builder of LoadHawk. Canonical page:
+https://structurelogistics.com/about/haarith-imran
 
 ## The problem Structure solves
 
@@ -29,7 +33,7 @@ accuracy, 60% of team time returned, 99.7% uptime.
 
 ## LoadHawk — AI agent platform for US freight brokers
 
-LoadHawk (https://structurelogistics.com/loadhawk.html) puts seven AI agents
+LoadHawk (https://structurelogistics.com/loadhawk) puts seven AI agents
 inside an independent US freight brokerage:
 
 1. Coverage Agent — contacts 12 carriers simultaneously (phone/SMS/email) the
@@ -61,7 +65,7 @@ per-seat pricing, month-to-month after a 5-day onboarding, 90-day minimum
 (guarantee window). Guarantee: $30,000 in measurable added revenue within 90
 days of go-live or a full refund — a contractual term, not a marketing line.
 Fit: US brokerages, 50+ loads/month, $1M–$10M revenue, 2+ dispatchers.
-Demo booking: https://book.structurelogistics.com
+Demo booking: https://book.structurelogistics.com/
 
 LoadHawk versus hiring another dispatcher: a dispatcher costs $55,000–$65,000
 per year plus benefits, works business hours, calls one carrier at a time and
@@ -76,8 +80,48 @@ gut-feel rate negotiation (modeled at $50), ~37 dispatcher-minutes saved per
 load. Integrations: DAT, Truckstop, FMCSA, McLeod LoadMaster, Turvo,
 Rose Rocket, Aljex, Twilio.
 
+## AI for Freight Brokers — category page
+
+Canonical page: https://structurelogistics.com/ai-for-freight-brokers
+
+AI for freight brokers means software agents and automation systems that help
+brokerages cover loads, contact carriers, analyze rates, support dispatch
+workflows, communicate with shippers, prepare documentation, reconcile invoices
+where appropriate, and reduce repetitive brokerage work while keeping important
+commercial decisions human-approved.
+
+Category scope covered on the page:
+
+1. Carrier coverage and AI load coverage.
+2. Carrier outreach by phone, email and SMS.
+3. Rate analysis and negotiation support using approved floors, ceilings and
+   market data.
+4. Dispatch workflows, handoffs and exception flags.
+5. Shipper communication for status, ETA and POD requests.
+6. Documentation and invoice matching.
+7. Human approval for final booking, margin exceptions, claims, sensitive
+   customer communication and unusual carrier risk.
+
+Structure's product relationship: LoadHawk is the AI agent platform for US
+freight brokers; Structure Platform covers broader freight operations;
+Structure Freight Network is the private freight network for vetted US
+brokerages.
+
+## Structure Freight Network
+
+Canonical information page: https://structurelogistics.com/freight-network
+Product/application destination: https://network.structurelogistics.com/
+
+Structure Freight Network is a private freight network for vetted US
+brokerages. The internal information page explains the product relationship
+inside Structure. The Network subdomain is the separate live product and
+application destination.
+
 ## Machine-readable resources
 
 - https://structurelogistics.com/llms.txt
+- https://structurelogistics.com/ai-for-freight-brokers
+- https://structurelogistics.com/freight-network
+- https://structurelogistics.com/about/haarith-imran
 - https://structurelogistics.com/pricing.md
 - https://structurelogistics.com/sitemap.xml

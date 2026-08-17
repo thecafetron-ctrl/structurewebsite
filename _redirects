@@ -1,4 +1,19 @@
-/loadhawk            /loadhawk.html        301
+http://structurelogistics.com/*           https://structurelogistics.com/:splat  301!
+http://www.structurelogistics.com/*       https://structurelogistics.com/:splat  301!
+https://www.structurelogistics.com/*      https://structurelogistics.com/:splat  301!
+
+/loadhawk.html       /loadhawk             301
+/loadhawk/           /loadhawk             301
+/loadhawk            /loadhawk.html        200
+/freight-network.html /freight-network     301
+/freight-network/    /freight-network      301
+/freight-network     /freight-network.html 200
+/ai-for-freight-brokers.html /ai-for-freight-brokers 301
+/ai-for-freight-brokers/ /ai-for-freight-brokers 301
+/ai-for-freight-brokers /ai-for-freight-brokers.html 200
+/about/haarith-imran.html /about/haarith-imran 301
+/about/haarith-imran/ /about/haarith-imran 301
+/about/haarith-imran /about/haarith-imran.html 200
 /platform            /#platform            301
 /contact             /#contact             301
 /use-cases           /#platform            301
