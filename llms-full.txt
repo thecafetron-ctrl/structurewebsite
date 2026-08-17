@@ -93,7 +93,7 @@ commercial decisions human-approved.
 Category scope covered on the page:
 
 1. Carrier coverage and AI load coverage.
-2. Carrier outreach by phone, email and SMS.
+2. Carrier communication by phone, email and SMS.
 3. Rate analysis and negotiation support using approved floors, ceilings and
    market data.
 4. Dispatch workflows, handoffs and exception flags.

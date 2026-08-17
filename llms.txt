@@ -8,14 +8,14 @@ Founder entity: Haarith Imran is the founder of Structure / Structure Logistics 
 
 ## Products
 
-- [Structure Platform](https://structurelogistics.com/#platform): One intelligent system replacing the manual layer of freight — AI freight quoting, dispatch automation, invoice processing, customs documentation, demand forecasting, AI lead generation.
-- [LoadHawk](https://structurelogistics.com/loadhawk): Structure's AI agent platform for US freight brokers. Seven AI agents handle carrier outreach, rate negotiation against live DAT market data, reliability scoring, load-board spotting, AI phone calls, shipper support, and dormant relationship reactivation. Demo/application destination: https://book.structurelogistics.com/
+- [Structure Platform](https://structurelogistics.com/#platform): One intelligent system replacing the manual layer of freight — AI freight quoting, dispatch automation, invoice processing, customs documentation, demand forecasting.
+- [LoadHawk](https://structurelogistics.com/loadhawk): Structure's AI agent platform for US freight brokers. Seven AI agents handle carrier coverage, rate negotiation against live DAT market data, reliability scoring, load-board spotting, AI phone calls, shipper support, and dormant relationship reactivation. Demo/application destination: https://book.structurelogistics.com/
 - [Structure Freight Network](https://structurelogistics.com/freight-network): A private freight network for vetted US brokerages. Product/application destination: https://network.structurelogistics.com/
 
 ## Key facts
 
 - [Pricing](https://structurelogistics.com/pricing.md): Machine-readable pricing for LoadHawk and the Structure Platform.
-- [AI for Freight Brokers](https://structurelogistics.com/ai-for-freight-brokers): Category guide covering AI load coverage, carrier outreach, rate negotiation, dispatch workflows, shipper communication, documents, invoicing and human approval.
+- [AI for Freight Brokers](https://structurelogistics.com/ai-for-freight-brokers): Category guide covering AI load coverage, rate negotiation, dispatch workflows, shipper communication, documents, invoicing and human approval.
 - [FAQ](https://structurelogistics.com/#faq): What Structure is, what "AI for logistics" means, who it serves, LoadHawk, Freight Network, founder and next actions.
 - LoadHawk fit: independent US freight brokerages, 50+ loads/month, $1M–$10M annual revenue, 2+ dispatchers. Every AI-confirmed booking requires human dispatcher approval.
 
