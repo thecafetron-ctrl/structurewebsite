@@ -113,9 +113,25 @@ Canonical information page: https://structurelogistics.com/freight-network
 Product/application destination: https://network.structurelogistics.com/
 
 Structure Freight Network is a private freight network for vetted US
-brokerages. The internal information page explains the product relationship
-inside Structure. The Network subdomain is the separate live product and
-application destination.
+brokerages, matched with shipper accounts. The internal information page
+explains the product relationship inside Structure. The Network subdomain is
+the separate live product and application destination for brokerages.
+
+## STRUCTURE for Shippers — the Lane Review
+
+Destination: https://shippers.structurelogistics.com/
+Machine-readable summary: https://shippers.structurelogistics.com/llms.txt
+
+The shipper side of the Freight Network. A US shipper (manufacturer or
+distributor, roughly 5–500 loads a month) briefs one lane in about three
+minutes. STRUCTURE runs it against every member desk's file — equipment,
+geography, commodity, capacity, the desk's own minimums — and names ONE
+vetted freight desk on a match card: FMCSA authority checked on a dated
+record, what the desk runs, what it does NOT do, and a written first-contact
+window. If no desk clears every gate, the shipper gets an honest no. Nothing
+about the shipper reaches any freight company until they approve the card.
+Free to shippers, always: STRUCTURE is paid by member desks, never takes a
+margin on freight, and never sees the rate.
 
 ## Machine-readable resources
 

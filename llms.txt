@@ -10,7 +10,8 @@ Founder entity: Haarith Imran is the founder of Structure / Structure Logistics 
 
 - [Structure Platform](https://structurelogistics.com/#platform): One intelligent system replacing the manual layer of freight — AI freight quoting, dispatch automation, invoice processing, customs documentation, demand forecasting.
 - [LoadHawk](https://structurelogistics.com/loadhawk): Structure's AI agent platform for US freight brokers. Seven AI agents handle carrier coverage, rate negotiation against live DAT market data, reliability scoring, load-board spotting, AI phone calls, shipper support, and dormant relationship reactivation. Demo/application destination: https://book.structurelogistics.com/
-- [Structure Freight Network](https://structurelogistics.com/freight-network): A private freight network for vetted US brokerages. Product/application destination: https://network.structurelogistics.com/
+- [Structure Freight Network](https://structurelogistics.com/freight-network): A private freight network for vetted US brokerages, matched with shipper accounts. Brokerage application destination: https://network.structurelogistics.com/
+- [STRUCTURE for Shippers — the Lane Review](https://shippers.structurelogistics.com/): The shipper side of the Freight Network. A US shipper briefs one lane; STRUCTURE names one vetted freight desk on a match card (FMCSA-checked on a dated record, limits stated in writing) or gives an honest no; nothing about the shipper is released until they approve. Free to shippers — STRUCTURE is paid by member desks. Destination: https://shippers.structurelogistics.com/
 
 ## Key facts
 
