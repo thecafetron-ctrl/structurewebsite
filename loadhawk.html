@@ -173,18 +173,35 @@
       <a href="#roi" data-hover data-scrollto>ROI</a>
       <a href="/ai-for-freight-brokers" data-hover>AI for Brokers</a>
       <a href="/freight-network" data-hover>Freight Network</a>
-      <a href="/" data-hover>Structure</a>
     </nav>
-    <a class="btn btn-nav" href="https://book.structurelogistics.com/" target="_blank" rel="noopener" data-hover data-magnetic>
-      <span class="btn-fill"></span><span class="btn-label">Book a demo</span>
-    </a>
+    <div class="nav-portals">
+      <div class="nav-drop">
+        <button class="btn btn-nav nav-drop-btn" type="button" aria-haspopup="true" aria-expanded="false" data-hover>
+          <span class="btn-fill"></span><span class="btn-label">Brokerages <i class="drop-caret" aria-hidden="true">▾</i></span>
+        </button>
+        <div class="nav-drop-menu">
+          <a href="https://network.structurelogistics.com/" target="_blank" rel="noopener" data-hover>
+            <span class="drop-k">SFN</span><span class="drop-d">Structure Freight Network ↗</span>
+          </a>
+          <a href="https://loadhawk.structurelogistics.com/" target="_blank" rel="noopener" data-hover>
+            <span class="drop-k">LoadHawk</span><span class="drop-d">AI agent platform ↗</span>
+          </a>
+        </div>
+      </div>
+      <a class="btn btn-nav" href="https://network.structurelogistics.com/" target="_blank" rel="noopener" data-hover>
+        <span class="btn-fill"></span><span class="btn-label">Carriers</span>
+      </a>
+      <span class="btn btn-nav btn-nav-disabled" aria-disabled="true" title="Shippers portal — coming soon">
+        <span class="btn-label">Shippers <i class="tag-soon">Soon</i></span>
+      </span>
+    </div>
     <button class="burger" id="burger" aria-label="Menu" data-hover>
       <span></span><span></span>
     </button>
   </header>
 
   <!-- ============ MOBILE MENU ============ -->
-  <div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay" id="menuOverlay" data-lenis-prevent>
     <div class="menu-inner">
       <a href="#proof" data-scrollto class="menu-link"><em>01</em> Watch it work</a>
       <a href="#agents" data-scrollto class="menu-link"><em>02</em> Agents</a>
@@ -194,6 +211,23 @@
       <a href="/ai-for-freight-brokers" class="menu-link"><em>06</em> AI for Brokers</a>
       <a href="/freight-network" class="menu-link"><em>07</em> Freight Network</a>
       <a href="/" class="menu-link"><em>08</em> Structure</a>
+      <div class="menu-portals">
+        <span class="mono menu-portals-h">Portals</span>
+        <div class="menu-portal-grid">
+          <a class="menu-portal" href="https://network.structurelogistics.com/" target="_blank" rel="noopener">
+            <span class="mono mp-k">Brokerages</span><span class="mp-v">SFN ↗</span>
+          </a>
+          <a class="menu-portal" href="https://loadhawk.structurelogistics.com/" target="_blank" rel="noopener">
+            <span class="mono mp-k">Brokerages</span><span class="mp-v">LoadHawk ↗</span>
+          </a>
+          <a class="menu-portal" href="https://network.structurelogistics.com/" target="_blank" rel="noopener">
+            <span class="mono mp-k">Carriers</span><span class="mp-v">SFN ↗</span>
+          </a>
+          <span class="menu-portal is-disabled" aria-disabled="true">
+            <span class="mono mp-k">Shippers</span><span class="mp-v">Coming soon</span>
+          </span>
+        </div>
+      </div>
       <a href="https://book.structurelogistics.com/" target="_blank" rel="noopener" class="menu-cta">Book a demo ↗</a>
     </div>
   </div>

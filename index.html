@@ -187,22 +187,57 @@
       <a href="/freight-network" data-hover class="nav-new">Freight Network <span class="tag-new">NEW</span></a>
       <a href="#contact" data-hover data-scrollto>Contact</a>
     </nav>
-    <a class="btn btn-nav" href="#contact" data-scrollto data-hover data-magnetic>
-      <span class="btn-fill"></span><span class="btn-label">Get started</span>
-    </a>
+    <div class="nav-portals">
+      <div class="nav-drop">
+        <button class="btn btn-nav nav-drop-btn" type="button" aria-haspopup="true" aria-expanded="false" data-hover>
+          <span class="btn-fill"></span><span class="btn-label">Brokerages <i class="drop-caret" aria-hidden="true">▾</i></span>
+        </button>
+        <div class="nav-drop-menu">
+          <a href="https://network.structurelogistics.com/" target="_blank" rel="noopener" data-hover>
+            <span class="drop-k">SFN</span><span class="drop-d">Structure Freight Network ↗</span>
+          </a>
+          <a href="https://loadhawk.structurelogistics.com/" target="_blank" rel="noopener" data-hover>
+            <span class="drop-k">LoadHawk</span><span class="drop-d">AI agent platform ↗</span>
+          </a>
+        </div>
+      </div>
+      <a class="btn btn-nav" href="https://network.structurelogistics.com/" target="_blank" rel="noopener" data-hover>
+        <span class="btn-fill"></span><span class="btn-label">Carriers</span>
+      </a>
+      <span class="btn btn-nav btn-nav-disabled" aria-disabled="true" title="Shippers portal — coming soon">
+        <span class="btn-label">Shippers <i class="tag-soon">Soon</i></span>
+      </span>
+    </div>
     <button class="burger" id="burger" aria-label="Menu" data-hover>
       <span></span><span></span>
     </button>
   </header>
 
   <!-- ============ MOBILE MENU ============ -->
-  <div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay" id="menuOverlay" data-lenis-prevent>
     <div class="menu-inner">
       <a href="#platform" data-scrollto class="menu-link"><em>01</em> Platform</a>
       <a href="#impact" data-scrollto class="menu-link"><em>02</em> Impact</a>
       <a href="/loadhawk" class="menu-link"><em>03</em> LoadHawk</a>
       <a href="/freight-network" class="menu-link"><em>04</em> Freight Network <span class="tag-new">NEW</span></a>
       <a href="#contact" data-scrollto class="menu-link"><em>05</em> Contact</a>
+      <div class="menu-portals">
+        <span class="mono menu-portals-h">Portals</span>
+        <div class="menu-portal-grid">
+          <a class="menu-portal" href="https://network.structurelogistics.com/" target="_blank" rel="noopener">
+            <span class="mono mp-k">Brokerages</span><span class="mp-v">SFN ↗</span>
+          </a>
+          <a class="menu-portal" href="https://loadhawk.structurelogistics.com/" target="_blank" rel="noopener">
+            <span class="mono mp-k">Brokerages</span><span class="mp-v">LoadHawk ↗</span>
+          </a>
+          <a class="menu-portal" href="https://network.structurelogistics.com/" target="_blank" rel="noopener">
+            <span class="mono mp-k">Carriers</span><span class="mp-v">SFN ↗</span>
+          </a>
+          <span class="menu-portal is-disabled" aria-disabled="true">
+            <span class="mono mp-k">Shippers</span><span class="mp-v">Coming soon</span>
+          </span>
+        </div>
+      </div>
       <a href="#contact" data-scrollto class="menu-cta">Get started ↓</a>
     </div>
   </div>
@@ -230,13 +265,26 @@
             quoting, dispatch, documents, forecasting — one intelligent system
             replacing the manual layer of logistics.
           </p>
-          <div class="hero-ctas" data-fade>
-            <a class="btn btn-solid" href="#contact" data-scrollto data-hover data-magnetic>
-              <span class="btn-fill"></span><span class="btn-label">Start your build ↓</span>
+          <div class="hero-ctas hero-portals" data-fade>
+            <div class="nav-drop">
+              <button class="btn btn-solid nav-drop-btn" type="button" aria-haspopup="true" aria-expanded="false" data-hover>
+                <span class="btn-fill"></span><span class="btn-label">Brokerages <i class="drop-caret" aria-hidden="true">▾</i></span>
+              </button>
+              <div class="nav-drop-menu">
+                <a href="https://network.structurelogistics.com/" target="_blank" rel="noopener" data-hover>
+                  <span class="drop-k">SFN</span><span class="drop-d">Structure Freight Network ↗</span>
+                </a>
+                <a href="https://loadhawk.structurelogistics.com/" target="_blank" rel="noopener" data-hover>
+                  <span class="drop-k">LoadHawk</span><span class="drop-d">AI agent platform ↗</span>
+                </a>
+              </div>
+            </div>
+            <a class="btn btn-ghost" href="https://network.structurelogistics.com/" target="_blank" rel="noopener" data-hover data-magnetic>
+              <span class="btn-fill"></span><span class="btn-label">Carriers ↗</span>
             </a>
-            <a class="btn btn-ghost" href="/loadhawk" data-hover data-magnetic>
-              <span class="btn-fill"></span><span class="btn-label">Explore LoadHawk ↗</span>
-            </a>
+            <span class="btn btn-ghost btn-disabled" aria-disabled="true" title="Shippers portal — coming soon">
+              <span class="btn-label">Shippers <i class="tag-soon">Soon</i></span>
+            </span>
           </div>
         </div>
       </div>

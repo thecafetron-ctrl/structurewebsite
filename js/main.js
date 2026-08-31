@@ -122,7 +122,7 @@
   /* ---------- HERO INTRO ---------- */
   function heroIntro() {
     const lines = document.querySelectorAll("#hero .line-inner");
-    const fades = document.querySelectorAll("#hero [data-fade], .nav");
+    const fades = document.querySelectorAll("#hero [data-fade]");
     const tl = gsap.timeline();
     tl.to(lines, {
       y: 0,
@@ -130,13 +130,14 @@
       ease: "expo.out",
       stagger: 0.1,
     });
+    /* keep the final inline transform: clearProps would let the
+       [data-fade] stylesheet offset (translateY(40px)) re-apply */
     tl.to(fades, {
       opacity: 1,
       y: 0,
       duration: 1,
       ease: "power3.out",
       stagger: 0.07,
-      clearProps: "transform",
     }, "-=0.9");
     return tl;
   }
@@ -392,6 +393,7 @@
     let lastY = 0;
     function onScroll(y) {
       if (document.body.classList.contains("menu-open")) return;
+      if (nav.querySelector(".nav-drop.open")) return;
       if (y > 140 && y > lastY + 4) nav.classList.add("nav-hidden");
       else if (y < lastY - 4) nav.classList.remove("nav-hidden");
       lastY = y;
@@ -412,6 +414,61 @@
         if (lenis) lenis.start();
       });
     });
+
+    /* portal dropdowns (Brokerages → SFN / LoadHawk).
+       The menu is re-parented to <body>: the blended header would
+       otherwise composite the panel with whatever sits behind it. */
+    const drops = [];
+    document.querySelectorAll(".nav-drop").forEach(function (drop) {
+      const btn = drop.querySelector(".nav-drop-btn");
+      const menu = drop.querySelector(".nav-drop-menu");
+      if (!btn || !menu) return;
+      document.body.appendChild(menu);
+      drops.push({ drop: drop, btn: btn, menu: menu });
+    });
+    function closeDrops() {
+      drops.forEach(function (d) {
+        d.drop.classList.remove("open");
+        d.menu.classList.remove("is-open");
+        d.btn.setAttribute("aria-expanded", "false");
+      });
+    }
+    drops.forEach(function (d) {
+      d.menu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { closeDrops(); });
+      });
+      d.btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const willOpen = !d.menu.classList.contains("is-open");
+        closeDrops();
+        if (willOpen) {
+          const r = d.btn.getBoundingClientRect();
+          if (r.width > 240) d.menu.style.minWidth = r.width + "px";
+          const mh = d.menu.offsetHeight;
+          const below = r.bottom + 12;
+          d.menu.style.top = (below + mh > window.innerHeight - 8
+            ? Math.max(8, r.top - 12 - mh)
+            : below) + "px";
+          d.menu.style.left = Math.max(12, Math.min(r.left, window.innerWidth - d.menu.offsetWidth - 12)) + "px";
+          d.drop.classList.add("open");
+          d.menu.classList.add("is-open");
+          d.btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+    if (drops.length) {
+      document.addEventListener("click", function (e) {
+        if (!(e.target.closest && (e.target.closest(".nav-drop") || e.target.closest(".nav-drop-menu")))) closeDrops();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeDrops();
+      });
+      const closeOnScroll = function () {
+        if (drops.some(function (d) { return d.menu.classList.contains("is-open"); })) closeDrops();
+      };
+      if (lenis) lenis.on("scroll", closeOnScroll);
+      window.addEventListener("scroll", closeOnScroll, { passive: true });
+    }
   }
 
   /* ---------- ANCHOR SCROLL ---------- */

@@ -239,6 +239,7 @@ main, .footer { position: relative; z-index: 1; }
   color: var(--white-pure);
   position: relative;
   padding: 4px 0;
+  white-space: nowrap;
 }
 .nav-links a::after {
   content: "";
@@ -289,6 +290,9 @@ body.menu-open .burger span:nth-child(2) { top: 15px; transform: rotate(-45deg);
   display: flex;
   align-items: center;
   padding: var(--pad);
+  padding-top: 88px; /* clear the fixed logo/burger row */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   clip-path: inset(0 0 100% 0);
   visibility: hidden;
   transition: clip-path 0.8s var(--ease-expo), visibility 0s 0.8s;
@@ -298,7 +302,7 @@ body.menu-open .menu-overlay {
   visibility: visible;
   transition: clip-path 0.8s var(--ease-expo);
 }
-.menu-inner { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.menu-inner { display: flex; flex-direction: column; gap: 8px; width: 100%; margin: auto 0; }
 .menu-link {
   font-weight: 800;
   font-stretch: 110%;
@@ -321,7 +325,7 @@ body.menu-open .menu-overlay {
   color: var(--accent);
 }
 .menu-cta {
-  margin-top: 28px;
+  margin-top: 20px;
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.2em;
@@ -330,6 +334,47 @@ body.menu-open .menu-overlay {
   border-radius: 100px;
   padding: 18px 28px;
   text-align: center;
+}
+
+/* ============ MOBILE MENU — PORTALS ============ */
+.menu-portals {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.menu-portals-h { color: var(--grey-dim); letter-spacing: 0.3em; }
+.menu-portal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.menu-portal {
+  border: 1px solid var(--hairline-strong);
+  border-radius: 8px;
+  padding: 14px 16px;
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.menu-portal:active,
+.menu-portal:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.4); }
+.mp-k { color: var(--accent); font-size: 9px; letter-spacing: 0.22em; }
+.mp-v { font-size: 14px; font-weight: 600; letter-spacing: 0.01em; }
+.menu-portal.is-disabled {
+  opacity: 0.4;
+  border-style: dashed;
+  pointer-events: none;
+}
+.menu-portal.is-disabled .mp-k { color: var(--grey-dim); }
+@media (max-height: 720px) {
+  /* short viewports: keep links + portals + CTA reachable without a cramped feel */
+  .menu-link { font-size: clamp(28px, 6.5vw, 44px); }
+  .menu-portals { margin-top: 18px; }
+  .menu-cta { margin-top: 14px; padding: 14px 24px; }
 }
 
 /* ============ BUTTONS ============ */
@@ -374,6 +419,88 @@ body.menu-open .menu-overlay {
 .btn-nav { padding: 11px 22px; font-size: 10px; background: transparent; color: var(--white-pure); border-color: rgba(255,255,255,0.5); }
 .btn-nav:hover .btn-label { color: var(--black); }
 
+/* ============ NAV PORTALS ============ */
+.nav-portals {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+.nav-drop { position: relative; }
+.nav-drop-btn { cursor: pointer; }
+.drop-caret {
+  font-style: normal;
+  font-size: 8px;
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 0.35s var(--ease-out);
+}
+.nav-drop.open .drop-caret { transform: rotate(180deg); }
+/* moved to <body> by JS so it escapes the header's difference blend
+   and always renders as a solid panel; positioned from the button rect */
+.nav-drop-menu {
+  position: fixed;
+  min-width: 240px;
+  background: var(--black);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.3s var(--ease-out), transform 0.35s var(--ease-out), visibility 0s 0.35s;
+  z-index: 1100;
+}
+.nav-drop-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.3s var(--ease-out), transform 0.35s var(--ease-out);
+}
+.nav-drop-menu a {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+.nav-drop-menu a:hover,
+.nav-drop-menu a:focus-visible { background: rgba(255, 255, 255, 0.08); }
+.drop-k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white-pure);
+}
+.drop-d { font-size: 12px; color: rgba(244, 243, 240, 0.6); }
+.btn-nav-disabled {
+  opacity: 0.35;
+  border-style: dashed;
+  cursor: default;
+  user-select: none;
+}
+.btn-nav.btn-nav-disabled:hover .btn-label { color: var(--white-pure); }
+.tag-soon {
+  font-style: normal;
+  font-size: 8px;
+  border: 1px solid currentColor;
+  padding: 2px 5px;
+  border-radius: 100px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.nav a:focus-visible,
+.nav button:focus-visible,
+.nav-drop-menu a:focus-visible {
+  outline: 1px solid var(--white-pure);
+  outline-offset: 3px;
+}
+
 /* dark variants for inverted (white) sections */
 .btn-dark { background: var(--black); color: var(--white-pure); border-color: var(--black); }
 .btn-dark .btn-fill { background: var(--white-pure); }
@@ -384,6 +511,15 @@ body.menu-open .menu-overlay {
 .btn-dark-ghost:hover .btn-label { color: var(--white-pure); }
 
 .btn-xl { padding: 24px 56px; font-size: 14px; }
+
+.btn-disabled {
+  opacity: 0.35;
+  border-style: dashed;
+  cursor: default;
+  user-select: none;
+}
+.btn-disabled:hover { box-shadow: none; border-color: var(--white); }
+.btn-disabled:hover .btn-label { color: inherit; }
 
 /* ============ SECTION SCAFFOLD ============ */
 section { position: relative; }
@@ -501,6 +637,9 @@ section { position: relative; }
   line-height: 1.7;
 }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-portals { align-items: stretch; }
+.hero-portals .nav-drop { display: flex; }
+.hero-portals .nav-drop .btn { width: 100%; }
 
 .hero-foot {
   position: relative;
@@ -1594,14 +1733,27 @@ section { position: relative; }
 .no-js [data-fade], .reduced [data-fade] { opacity: 1; transform: none; }
 
 /* ============ RESPONSIVE ============ */
+@media (max-width: 1380px) {
+  .nav-links { gap: 22px; }
+  .nav-links a { font-size: 10px; letter-spacing: 0.13em; }
+  .nav-portals { gap: 8px; }
+  .nav-portals .btn-nav { padding: 10px 16px; }
+}
+@media (max-width: 1280px) {
+  .nav { gap: 16px; }
+  .nav-links { gap: 15px; }
+}
+@media (max-width: 1200px) {
+  /* portal cluster + links no longer fit side by side — hand over to the menu */
+  .nav-links, .nav-portals { display: none; }
+  .burger { display: block; }
+}
 @media (max-width: 1024px) {
   .impact-grid { grid-template-columns: repeat(2, 1fr); }
   .process-row { grid-template-columns: 70px 1fr; }
   .process-copy { grid-column: 2; }
   .agent-head { grid-template-columns: 70px 1fr; }
   .agent-stat { grid-column: 2; text-align: left; }
-  .nav-links { gap: 18px; }
-  .nav-links a { font-size: 10px; letter-spacing: 0.12em; }
 }
 @media (max-width: 820px) {
   body { font-size: 15px; }
@@ -1627,8 +1779,6 @@ section { position: relative; }
     margin-top: 18px;
   }
   .nav { padding: 14px 20px; }
-  .nav-links, .btn-nav { display: none; }
-  .burger { display: block; }
   .problem-grid, .fit-grid { grid-template-columns: 1fr; }
   .impact-grid { grid-template-columns: 1fr 1fr; }
   .impact-cell { min-height: 150px; padding: 22px; }
@@ -1638,6 +1788,9 @@ section { position: relative; }
   .hero-sub { max-width: none; }
   .hero-ctas { width: 100%; }
   .hero-ctas .btn { flex: 1 1 auto; min-height: 54px; }
+  /* portal chooser: Brokerages full width, Carriers + Shippers share a row */
+  .hero-portals .nav-drop { flex: 1 1 100%; }
+  .hero-portals > .btn { flex: 1 1 40%; }
   .btn { padding: 15px 24px; }
   .btn-xl { padding: 20px 36px; font-size: 12px; width: 100%; }
   .pipe-compare { flex-direction: column; }
@@ -1706,7 +1859,7 @@ section { position: relative; }
   .lh-facts li { padding: 14px 0; }
   .fit-cell { min-height: 0; padding: 22px 20px; gap: 14px; }
   .fit-cell p { font-size: 16px; }
-  .footer-giant { transform: translateY(10%); }
+  .footer-giant { transform: translateY(10%); font-size: 11vw; }
   .caps-head { margin-bottom: 24px; }
   .cap-card { min-height: 380px; padding: 20px; }
   .cap-fig { height: 80px; margin-bottom: 18px; }
