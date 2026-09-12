@@ -14,6 +14,22 @@ https://www.structurelogistics.com/*      https://structurelogistics.com/:splat 
 /about/haarith-imran.html /about/haarith-imran 301!
 /about/haarith-imran/ /about/haarith-imran 301
 /about/haarith-imran /about/haarith-imran.html 200
+
+/privacy-policy.html /privacy-policy   301!
+/privacy-policy/     /privacy-policy   301
+/privacy-policy      /privacy-policy.html 200
+/privacy             /privacy-policy   301
+/privacy/            /privacy-policy   301
+/terms.html          /terms            301!
+/terms/              /terms            301
+/terms               /terms.html       200
+/terms-of-service    /terms            301
+/terms-and-conditions /terms           301
+/terms-conditions    /terms            301
+/tnc                 /terms            301
+/cookies             /privacy-policy   301
+/cookie-policy       /privacy-policy   301
+/sms-terms           /terms            301
 /platform            /#platform            301
 /contact             /#contact             301
 /use-cases           /#platform            301
