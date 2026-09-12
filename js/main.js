@@ -638,8 +638,27 @@
     const form = document.getElementById("contactForm");
     if (!form) return;
     const status = document.getElementById("formStatus");
+    const phone = form.querySelector("#f-phone");
+    const consents = form.querySelectorAll('input[name^="sms_consent"]');
+
+    // A phone number is optional, but consenting to texts without one is
+    // incoherent: asking here is cheaper than a consent record we cannot use.
+    function consentNeedsPhone() {
+      let ticked = false;
+      consents.forEach(function (c) { if (c.checked) ticked = true; });
+      return ticked && phone && !phone.value.trim();
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      if (consentNeedsPhone()) {
+        status.textContent = "ADD A MOBILE NUMBER, OR UNTICK THE TEXT BOXES";
+        phone.focus();
+        phone.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
       const data = new FormData(form);
       status.textContent = "TRANSMITTING…";
       fetch("/", {
@@ -648,28 +667,38 @@
         body: new URLSearchParams(data).toString(),
       })
         .then(function (res) {
-          if (!res.ok) throw new Error("send failed");
-          done();
+          if (!res.ok) throw new Error("send failed, status " + res.status);
+          sent();
         })
         .catch(function () {
-          // fallback: hand off to email client with the details pre-filled
-          const body =
-            "Name: " + (data.get("name") || "") +
-            "%0ACompany: " + (data.get("company") || "") +
-            "%0AEmail: " + (data.get("email") || "") +
-            "%0AMonthly loads: " + (data.get("volume") || "") +
-            "%0A%0A" + encodeURIComponent(data.get("message") || "");
-          window.location.href =
-            "mailto:sales@structurelogistics.com?subject=" +
-            encodeURIComponent("New inquiry — " + (data.get("company") || "Structure website")) +
-            "&body=" + body;
-          done();
+          // The send failed. Say so, and offer email as a choice the visitor
+          // makes: a mailto opens a compose window we cannot see the end of, so
+          // it is never evidence the message arrived.
+          failed(data);
         });
-      function done() {
+
+      function sent() {
         form.classList.add("is-sent");
         status.textContent = "✦ RECEIVED — WE'LL BE IN TOUCH WITHIN 24H";
         const label = form.querySelector(".form-submit .btn-label");
         if (label) label.textContent = "Sent ✦";
+      }
+
+      function failed(d) {
+        const body =
+          "Name: " + (d.get("name") || "") +
+          "%0ACompany: " + (d.get("company") || "") +
+          "%0AEmail: " + (d.get("email") || "") +
+          "%0APhone: " + (d.get("phone") || "") +
+          "%0AMonthly loads: " + (d.get("volume") || "") +
+          "%0A%0A" + encodeURIComponent(d.get("message") || "");
+        const href =
+          "mailto:sales@structurelogistics.com?subject=" +
+          encodeURIComponent("New inquiry — " + (d.get("company") || "Structure website")) +
+          "&body=" + body;
+        status.innerHTML =
+          'THAT DIDN\'T SEND. <a href="' + href + '">EMAIL IT TO US INSTEAD</a>' +
+          ' OR CALL <a href="tel:+14422378419">+1 442 237 8419</a>.';
       }
     });
   }
