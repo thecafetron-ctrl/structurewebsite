@@ -641,8 +641,6 @@
     const phone = form.querySelector("#f-phone");
     const consents = form.querySelectorAll('input[name^="sms_consent"]');
 
-    // A phone number is optional, but consenting to texts without one is
-    // incoherent: asking here is cheaper than a consent record we cannot use.
     function consentNeedsPhone() {
       let ticked = false;
       consents.forEach(function (c) { if (c.checked) ticked = true; });
@@ -671,9 +669,6 @@
           sent();
         })
         .catch(function () {
-          // The send failed. Say so, and offer email as a choice the visitor
-          // makes: a mailto opens a compose window we cannot see the end of, so
-          // it is never evidence the message arrived.
           failed(data);
         });
 
@@ -685,20 +680,25 @@
       }
 
       function failed(d) {
-        const body =
-          "Name: " + (d.get("name") || "") +
-          "%0ACompany: " + (d.get("company") || "") +
-          "%0AEmail: " + (d.get("email") || "") +
-          "%0APhone: " + (d.get("phone") || "") +
-          "%0AMonthly loads: " + (d.get("volume") || "") +
-          "%0A%0A" + encodeURIComponent(d.get("message") || "");
-        const href =
+        const body = [
+          "Name: " + (d.get("name") || ""),
+          "Company: " + (d.get("company") || ""),
+          "Email: " + (d.get("email") || ""),
+          "Phone: " + (d.get("phone") || ""),
+          "Monthly loads: " + (d.get("volume") || ""),
+          "",
+          d.get("message") || "",
+        ].join("\n");
+        const mail = document.createElement("a");
+        mail.href =
           "mailto:sales@structurelogistics.com?subject=" +
           encodeURIComponent("New inquiry — " + (d.get("company") || "Structure website")) +
-          "&body=" + body;
-        status.innerHTML =
-          'THAT DIDN\'T SEND. <a href="' + href + '">EMAIL IT TO US INSTEAD</a>' +
-          ' OR CALL <a href="tel:+14422378419">+1 442 237 8419</a>.';
+          "&body=" + encodeURIComponent(body);
+        mail.textContent = "EMAIL IT TO US INSTEAD";
+        const call = document.createElement("a");
+        call.href = "tel:+14422378419";
+        call.textContent = "+1 442 237 8419";
+        status.replaceChildren("THAT DIDN'T SEND. ", mail, " OR CALL ", call, ".");
       }
     });
   }
