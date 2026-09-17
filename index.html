@@ -655,6 +655,24 @@
             <span>+1 442 237 8419</span>
             <span class="live-row"><i class="pulse-dot"></i>RESPONSE WITHIN 24H</span>
           </div>
+          <div class="sms-note" data-fade>
+            <span class="sms-note-h">Our text messaging programme</span>
+            <p>
+              Lavisha International FZE LLC, doing business as STRUCTURE, builds AI systems for
+              logistics and makes LoadHawk, an AI agent platform for freight brokers. If you tick a
+              box below, we will text the number you give us: a reply to your enquiry, confirmation
+              of a call you book and a reminder before it, and separately, if you ask for it,
+              special offers and service updates.
+            </p>
+            <p>
+              Consent is never required to contact us. Message frequency may vary and message and
+              data rates may apply. Reply STOP to opt out, HELP for assistance, or reach us at
+              <a href="mailto:support@structurelogistics.com">support@structurelogistics.com</a> and
+              <a href="tel:+14422378419">+1 442 237 8419</a>. See our
+              <a href="/privacy-policy">Privacy Policy</a> and
+              <a href="/terms">Terms &amp; Conditions</a>.
+            </p>
+          </div>
         </div>
         <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/">
           <input type="hidden" name="form-name" value="contact" />
@@ -662,7 +680,7 @@
           <div class="form-row">
             <div class="form-field" data-fade>
               <label class="mono" for="f-name">NAME</label>
-              <input id="f-name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
+              <input id="f-name" name="name" type="text" placeholder="Your name" required autocomplete="name" autocapitalize="words" />
             </div>
             <div class="form-field" data-fade>
               <label class="mono" for="f-company">COMPANY</label>
@@ -672,27 +690,53 @@
           <div class="form-row">
             <div class="form-field" data-fade>
               <label class="mono" for="f-email">WORK EMAIL</label>
-              <input id="f-email" name="email" type="email" placeholder="you@company.com" required autocomplete="email" />
+              <input id="f-email" name="email" type="email" placeholder="you@company.com" required autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" />
             </div>
             <div class="form-field" data-fade>
-              <label class="mono" for="f-volume">MONTHLY LOADS</label>
-              <select id="f-volume" name="volume" required>
-                <option value="" disabled selected>Select volume</option>
-                <option value="under-50">Under 50</option>
-                <option value="50-100">50–100</option>
-                <option value="100-300">100–300</option>
-                <option value="300+">300+</option>
-              </select>
+              <label class="mono" for="f-phone">MOBILE <span class="label-opt">(OPTIONAL)</span></label>
+              <input id="f-phone" name="phone" type="tel" placeholder="+1 555 000 0000" autocomplete="tel" inputmode="tel" />
             </div>
           </div>
           <div class="form-field" data-fade>
-            <label class="mono" for="f-msg">WHAT SHOULD THE AI TAKE OFF YOUR PLATE?</label>
-            <textarea id="f-msg" name="message" rows="4" placeholder="Quoting, dispatch, carrier coverage, paperwork…"></textarea>
+            <label class="mono" for="f-volume">MONTHLY LOADS</label>
+            <select id="f-volume" name="volume" required>
+              <option value="" disabled selected>Select volume</option>
+              <option value="under-50">Under 50</option>
+              <option value="50-100">50&ndash;100</option>
+              <option value="100-300">100&ndash;300</option>
+              <option value="300+">300+</option>
+            </select>
           </div>
+          <div class="form-field" data-fade>
+            <label class="mono" for="f-msg">WHAT SHOULD THE AI TAKE OFF YOUR PLATE?</label>
+            <textarea id="f-msg" name="message" rows="4" placeholder="Quoting, dispatch, carrier coverage, paperwork&hellip;"></textarea>
+          </div>
+
+          <fieldset class="form-consent" data-fade>
+            <legend class="consent-legend">Text messages (optional)</legend>
+            <label class="consent-row" for="f-sms-marketing">
+              <input type="checkbox" id="f-sms-marketing" name="sms_consent_marketing" value="yes" />
+              <span class="consent-text">I consent to receive marketing text messages, about special offers, discounts, and service updates, from Lavisha International FZE LLC DBA STRUCTURE at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+            </label>
+            <label class="consent-row" for="f-sms-transactional">
+              <input type="checkbox" id="f-sms-transactional" name="sms_consent_transactional" value="yes" />
+              <span class="consent-text">I consent to receive non-marketing text messages from Lavisha International FZE LLC DBA STRUCTURE about my enquiry, my booked call, appointment confirmations and reminders. Message frequency may vary, message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out.</span>
+            </label>
+            <p class="consent-optional">
+              Both boxes are optional and neither is ticked for you. You can send this form without
+              ticking either, and we will reply by email.
+            </p>
+          </fieldset>
+
+          <p class="form-legal">
+            See our <a href="/privacy-policy">Privacy Policy</a> and
+            <a href="/terms">Terms &amp; Conditions</a>.
+          </p>
+
           <button class="btn btn-solid btn-xl form-submit" type="submit" data-hover data-magnetic>
-            <span class="btn-fill"></span><span class="btn-label">Send it ↗</span>
+            <span class="btn-fill"></span><span class="btn-label">Send it &#8599;</span>
           </button>
-          <p class="form-status mono" id="formStatus" role="status"></p>
+          <p class="form-status mono" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -730,10 +774,16 @@
           <a href="https://shippers.structurelogistics.com/" target="_blank" rel="noopener" data-hover>Shippers — request a lane review</a>
           <a href="/about/haarith-imran" data-hover>Haarith Imran — founder</a>
         </div>
+        <div class="footer-col">
+          <span class="mono footer-h">LEGAL</span>
+          <a href="/privacy-policy" data-hover>Privacy Policy</a>
+          <a href="/terms" data-hover>Terms &amp; Conditions</a>
+          <span class="footer-note">Text STOP to opt out, HELP for help. Message and data rates may apply.</span>
+        </div>
       </div>
       <div class="footer-giant" aria-hidden="true">STRUCTURE</div>
       <div class="footer-base mono">
-        <span>© 2026 STRUCTURE — AI FOR LOGISTICS</span>
+        <span>© 2026 LAVISHA INTERNATIONAL FZE LLC, DBA STRUCTURE — AI FOR LOGISTICS</span>
         <span>MAKING LOGISTICS SMARTER</span>
       </div>
     </footer>

@@ -13,6 +13,8 @@ const rewrites = new Map([
   ["/freight-network", "freight-network.html"],
   ["/ai-for-freight-brokers", "ai-for-freight-brokers.html"],
   ["/about/haarith-imran", "about/haarith-imran.html"],
+  ["/privacy-policy", "privacy-policy.html"],
+  ["/terms", "terms.html"],
 ]);
 
 const redirects = new Map([
@@ -24,6 +26,13 @@ const redirects = new Map([
   ["/ai-for-freight-brokers/", "/ai-for-freight-brokers"],
   ["/about/haarith-imran.html", "/about/haarith-imran"],
   ["/about/haarith-imran/", "/about/haarith-imran"],
+  ["/privacy-policy.html", "/privacy-policy"],
+  ["/privacy-policy/", "/privacy-policy"],
+  ["/privacy", "/privacy-policy"],
+  ["/terms.html", "/terms"],
+  ["/terms/", "/terms"],
+  ["/terms-of-service", "/terms"],
+  ["/cookies", "/privacy-policy"],
 ]);
 
 const types = {

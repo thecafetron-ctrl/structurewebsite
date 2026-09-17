@@ -638,8 +638,25 @@
     const form = document.getElementById("contactForm");
     if (!form) return;
     const status = document.getElementById("formStatus");
+    const phone = form.querySelector("#f-phone");
+    const consents = form.querySelectorAll('input[name^="sms_consent"]');
+
+    function consentNeedsPhone() {
+      let ticked = false;
+      consents.forEach(function (c) { if (c.checked) ticked = true; });
+      return ticked && phone && !phone.value.trim();
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      if (consentNeedsPhone()) {
+        status.textContent = "ADD A MOBILE NUMBER, OR UNTICK THE TEXT BOXES";
+        phone.focus();
+        phone.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
       const data = new FormData(form);
       status.textContent = "TRANSMITTING…";
       fetch("/", {
@@ -648,28 +665,40 @@
         body: new URLSearchParams(data).toString(),
       })
         .then(function (res) {
-          if (!res.ok) throw new Error("send failed");
-          done();
+          if (!res.ok) throw new Error("send failed, status " + res.status);
+          sent();
         })
         .catch(function () {
-          // fallback: hand off to email client with the details pre-filled
-          const body =
-            "Name: " + (data.get("name") || "") +
-            "%0ACompany: " + (data.get("company") || "") +
-            "%0AEmail: " + (data.get("email") || "") +
-            "%0AMonthly loads: " + (data.get("volume") || "") +
-            "%0A%0A" + encodeURIComponent(data.get("message") || "");
-          window.location.href =
-            "mailto:sales@structurelogistics.com?subject=" +
-            encodeURIComponent("New inquiry — " + (data.get("company") || "Structure website")) +
-            "&body=" + body;
-          done();
+          failed(data);
         });
-      function done() {
+
+      function sent() {
         form.classList.add("is-sent");
         status.textContent = "✦ RECEIVED — WE'LL BE IN TOUCH WITHIN 24H";
         const label = form.querySelector(".form-submit .btn-label");
         if (label) label.textContent = "Sent ✦";
+      }
+
+      function failed(d) {
+        const body = [
+          "Name: " + (d.get("name") || ""),
+          "Company: " + (d.get("company") || ""),
+          "Email: " + (d.get("email") || ""),
+          "Phone: " + (d.get("phone") || ""),
+          "Monthly loads: " + (d.get("volume") || ""),
+          "",
+          d.get("message") || "",
+        ].join("\n");
+        const mail = document.createElement("a");
+        mail.href =
+          "mailto:sales@structurelogistics.com?subject=" +
+          encodeURIComponent("New inquiry — " + (d.get("company") || "Structure website")) +
+          "&body=" + encodeURIComponent(body);
+        mail.textContent = "EMAIL IT TO US INSTEAD";
+        const call = document.createElement("a");
+        call.href = "tel:+14422378419";
+        call.textContent = "+1 442 237 8419";
+        status.replaceChildren("THAT DIDN'T SEND. ", mail, " OR CALL ", call, ".");
       }
     });
   }
